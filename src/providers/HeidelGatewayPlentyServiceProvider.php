@@ -27,7 +27,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 	/**
 	 * Boot additional services for the payment method
 	 *
-	 * @param PayUponPickupHelper $paymentHelper
+	 * @param HeidelGatewayPlentyHelper $paymentHelper
 	 * @param PaymentMethodContainer $payContainer
 	 * @param Dispatcher $eventDispatcher
 	 */
