@@ -1,0 +1,12 @@
+{
+   	"version"           : "16.11.00",
+   	"name"              : "Heidelpay Corporate Design-Edition",
+   	"description"       : "",
+   	"author"            : "Heidelberger Payment GmbH",
+   	"keywords"          : ["plentymarkets", "plugins", "payment", "heidelpay", "bezahlen", "checkout"],
+   	"type"              : "payment",
+	"require"           : [],
+    "namespace"         : "PlentyHeidelGateway",
+    "serviceProvider"  	: "PlentyHeidelGateway\\Providers\\HeidelpayServiceProvider"
+}
+

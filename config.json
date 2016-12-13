@@ -1,0 +1,198 @@
+
+
+    [
+        {
+            "tab"       : "Grundeinstellungen",
+            "key"       : "basicData.securitySender",
+            "label"     : "Security Sender",
+            "type"      : "text",
+            "default"	: "31HA07BC8142C5A171745D00AD63D182"
+        },
+        {
+            "tab"       : "Grundeinstellungen",
+            "key"       : "basicData.login",
+            "label"     : "Login",
+            "type"      : "text",
+            "default"	: "31ha07bc8142c5a171744e5aef11ffd3"
+        },
+        {
+            "tab"       : "Grundeinstellungen",
+            "key"       : "basicData.password",
+            "label"     : "Passwort",
+            "type"      : "text",
+            "default"	: "93167DE7"
+        },
+        {
+		      "tab": "Grundeinstellungen",
+		      "key": "basicData.transactionmode",
+		      "label": "Sandbox Modus",
+		      "type": "dropdown",
+		      "possibleValues": {
+		        "0": "Yes",
+		        "1": "No"
+		      },
+		      "default": "0"
+		},
+        {
+            "tab"       : "Grundeinstellungen",
+            "key"       : "basicData.secret",
+            "label"     : "Secret",
+            "type"      : "text",
+            "default"	: "ChangeMe"
+        },
+        {
+		    "tab": "Grundeinstellungen",
+		    "key": "basicData.debug",
+		    "label": "Debug Modus",
+		    "type": "dropdown",
+		    "possibleValues": {
+		      "0": "No",
+		      "1": "Yes"
+		   	},
+		    "default": "0"
+		},
+        {
+            "tab"       : "Zahlart Kreditkarte",
+            "key"       : "paymethods.hgw_cc.channel",
+            "label"     : "Channel",
+            "type"      : "text",
+            "default"	: "31HA07BC8142C5A171744F3D6D155865"
+        },
+        {
+            "tab"       : "Zahlart Kreditkarte",
+            "key"       : "paymethods.hgw_cc.channel",
+            "label"     : "Channel Abo",
+            "type"      : "text",
+            "default"	: ""
+        },
+        {
+            "tab"       : "Zahlart Kreditkarte",
+            "key"       : "paymethods.hgw_cc.active",
+            "label"     : "Aktiv",
+            "type"      : "checkbox",
+            "default"	: false
+        },
+        
+        {
+		    "tab": "Zahlart Kreditkarte",
+		    "key": "paymethods.hgw_cc.bookingMode",
+		    "label": "Buchungsmodus",
+		    "type": "dropdown",
+		    "possibleValues": {
+		     "CC.DB" 	: "Debit",
+             "CC.PA" 	: "Reservierung",
+             "CC.RG.DB" 	: "Registrierung mit Debit",
+             "CC.RG.PA" 	: "Registrierung mit Reservierung"
+		   	},
+		    "default": "CC.DB"
+		},
+                
+        
+        {
+            "tab"       : "Zahlart Debitkarte",
+            "key"       : "paymethods.hgw_dc.channel",
+            "label"     : "Channel",
+            "type"      : "text",
+            "default"	: "31HA07BC8142C5A171744F3D6D155865"
+        },
+        {
+            "tab"       : "Zahlart Debitkarte",
+            "key"       : "paymethods.hgw_dc.channel.abo",
+            "label"     : "Channel Abo",
+            "type"      : "text",
+            "default"	: ""
+        },
+        {
+            "tab"       : "Zahlart Debitkarte",
+            "key"       : "paymethods.hgw_dc.active",
+            "label"     : "Aktiv",
+            "type"      : "checkbox",
+            "default"	: false
+        },
+        
+        {
+		    "tab": "Zahlart Debitkarte",
+		    "key": "paymethods.hgw_dc.bookingMode",
+		    "label": "Buchungsmodus",
+		    "type": "dropdown",
+		    "possibleValues": {
+		     "DC.DB" 	: "Debit",
+             "DC.PA" 	: "Reservierung",
+             "DC.RG.DB" : "Registrierung mit Debit",
+             "DC.RG.PA" : "Registrierung mit Reservierung"
+		   	},
+		    "default": "DC.DB"
+		},
+          
+        {
+            "tab"       : "Zahlart Lastschrift",
+            "key"       : "paymethods.hgw_dd.channel",
+            "label"     : "Channel",
+            "type"      : "text",
+            "default"	: "31HA07BC8142C5A171744F3D6D155865"
+        },
+        {
+            "tab"       : "Zahlart Lastschrift",
+            "key"       : "paymethods.hgw_dd.active",
+            "label"     : "Aktiv",
+            "type"      : "checkbox",
+            "default"	: false
+        },
+        {
+		    "tab": "Zahlart Lastschrift",
+		    "key": "paymethods.hgw_dd.bookingMode",
+		    "label": "Buchungsmodus",
+		    "type": "dropdown",
+		    "possibleValues": {
+		     "DD.DB" 	: "Debit",
+             "DD.PA" 	: "Reservierung",
+             "DD.RG.DB" : "Registrierung mit Debit",
+             "DD.RG.PA" : "Registrierung mit Reservierung"
+		   	},
+		    "default": "DD.DB"
+		},
+        {
+            "tab"       : "Zahlart Lastschrift",
+            "key"       : "paymethods.hgw_dd.guarantee",
+            "label"     : "Lastschrift mit Garantie",
+            "type"      : "dropdown",
+            "possibleValues": {
+            	"0" 	: "No",
+            	"1" 	: "Yes"
+        	},
+        	"default"   : "0"
+        },
+        
+        
+        {
+            "tab"       : "Zahlart Rechnung",
+            "key"       : "paymethods.hgw_iv.channel",
+            "label"     : "Channel",
+            "type"      : "text",
+            "default"	: "31HA07BC8142C5A171744F3D6D155865"
+        },
+        {
+            "tab"       : "Zahlart Rechnung",
+            "key"       : "paymethods.hgw_iv.active",
+            "label"     : "Aktiv",
+            "type"      : "checkbox",
+            "default"	: false
+        },
+       
+        
+        {
+            "tab"       : "Zahlart Sofortüberweisung",
+            "key"       : "paymethods.hgw_sue.channel",
+            "label"     : "Channel",
+            "type"      : "text",
+            "default"	: "31HA07BC8142C5A171749CDAA43365D2"
+        },
+        {
+            "tab"       : "Zahlart Sofort&uuml;berweisung",
+            "key"       : "paymethods.hgw_sue.active",
+            "label"     : "Aktiv",
+            "type"      : "checkbox",
+            "default"	: false
+        }
+    ]
+
