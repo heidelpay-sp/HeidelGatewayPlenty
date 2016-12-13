@@ -30,11 +30,11 @@ class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 	
 	
 	public function __construct(BasketRepositoryContract    $basketRepository,
-			ContactRepositoryContract   $contactRepository,
+// 			ContactRepositoryContract   $contactRepository,
 			ConfigRepository            $configRepository)
 	{
 		$this->basketRepository     = $basketRepository;
-		$this->contactRepository    = $contactRepository;
+// 		$this->contactRepository    = $contactRepository;
 		$this->configRepository     = $configRepository;
 	}
 	
@@ -68,7 +68,7 @@ class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 		{
 			$name = 'Heidelpay CD-Edition Kreditkarte';
 		}
-trigger_error('Juhu');
+
 		return $name;
 
 	}
