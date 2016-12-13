@@ -25,17 +25,14 @@ class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 			BasketRepositoryContract $basketRepositoryContract):bool
 			{
 				/** @var bool $active */
-				$active = true;
-
-				/** @var Basket $basket */
-				$basket = $basketRepositoryContract->load();
-
+				$active = false;
+mail('sascha.pflueger@heidelpay.de','Plenty PaymentMethod Z29',print_r('',1));
 				/**
-				 * Check the shipping profile ID. The ID can be entered in the config.json.
+				 * Check if Paymethod is active
 				 */
-				if( $configRepository->get('PayUponPickup.shippingProfileId') != $basket->shippingProfileId)
+				if( $configRepository->get('HeidelGatewayPlenty.paymethods.hgw_cc.active') )
 				{
-					$active = false;
+					$active = true;
 				}
 
 				return $active;
