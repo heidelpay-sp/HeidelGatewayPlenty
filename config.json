@@ -60,6 +60,13 @@
         },
         {
             "tab"       : "Zahlart Kreditkarte",
+            "key"       : "paymethods.hgw_cc.name",
+            "label"     : "Anzeigename",
+            "type"      : "text",
+            "default"	: "Heidelpay CD-Edition Kreditkarte"
+        },
+        {
+            "tab"       : "Zahlart Kreditkarte",
             "key"       : "paymethods.hgw_cc.channel",
             "label"     : "Channel Abo",
             "type"      : "text",
