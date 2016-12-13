@@ -53,7 +53,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 						$event->setValue('');
 						$event->setType('continue');
 					}
-		});
+				});
 
 		// Listen for the event that executes the payment
 		$eventDispatcher->listen(ExecutePayment::class,
@@ -64,6 +64,6 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 						$event->setValue('<h1>Pay upon pickup<h1>');
 						$event->setType('htmlContent');
 					}
-		});
+				});
 	}
 }
