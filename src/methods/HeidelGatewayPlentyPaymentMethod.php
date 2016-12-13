@@ -26,7 +26,7 @@ class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 			{
 				/** @var bool $active */
 				$active = false;
-mail('sascha.pflueger@heidelpay.de','Plenty PaymentMethod Z29',print_r('',1));
+
 				/**
 				 * Check if Paymethod is active
 				 */
@@ -34,7 +34,7 @@ mail('sascha.pflueger@heidelpay.de','Plenty PaymentMethod Z29',print_r('',1));
 				{
 					$active = true;
 				}
-
+				$active = true;
 				return $active;
 	}
 
