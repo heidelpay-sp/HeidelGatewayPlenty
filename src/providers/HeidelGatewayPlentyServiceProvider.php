@@ -40,7 +40,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 		$paymentHelper->createMopIfNotExists();
 
 		// Register the Pay upon pickup payment method in the payment method container
-		$payContainer->register('plenty_payuponpickup::PAYUPONPICKUP', PayUponPickupPaymentMethod::class,
+		$payContainer->register('plenty_payuponpickup::PAYUPONPICKUP', HeidelGatewayPlentyPaymentMethod::class,
 				[ AfterBasketChanged::class, AfterBasketItemAdd::class, AfterBasketCreate::class ]
 				);
 
