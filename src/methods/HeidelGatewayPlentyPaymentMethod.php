@@ -49,11 +49,11 @@ class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 	 */
 	public function getName( ConfigRepository $configRepository ):string
 	{
-		$name = $configRepository->get('PayUponPickup.name');
-
+		$name = $configRepository->get('HeidelGatewayPlenty.name');
+		
 		if(!strlen($name))
 		{
-			$name = 'Pay upon pickup';
+			$name = 'TestZahlart';
 		}
 
 		return $name;
