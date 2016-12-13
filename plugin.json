@@ -6,7 +6,7 @@
    	"keywords"          : ["plentymarkets", "plugins", "payment", "heidelpay", "bezahlen", "checkout"],
    	"type"              : "payment",
 	"require"           : [],
-    "namespace"         : "PlentyHeidelGateway",
-    "serviceProvider"  	: "PlentyHeidelGateway\\Providers\\HeidelpayServiceProvider"
+    "namespace"         : "HeidelGatewayPlenty",
+    "serviceProvider"  	: "HeidelGatewayPlenty\\Providers\\HeidelpayServiceProvider"
 }
 
