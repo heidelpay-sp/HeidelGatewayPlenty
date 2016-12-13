@@ -68,8 +68,8 @@ class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 		{
 			$name = 'Heidelpay CD-Edition Kreditkarte';
 		}
-
-		eturn $name;
+trigger_error('Juhu');
+		return $name;
 
 	}
 
