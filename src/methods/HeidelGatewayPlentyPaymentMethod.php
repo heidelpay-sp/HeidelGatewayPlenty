@@ -12,6 +12,32 @@ use Plenty\Modules\Basket\Models\Basket;
  */
 class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 {
+	
+	/**
+	 * @var BasketRepositoryContract
+	 */
+	private $basketRepository;
+	
+	/**
+	 * @var ContactRepositoryContract
+	 */
+	private $contactRepository;
+	
+	/**
+	 * @var ConfigRepository
+	 */
+	private $configRepository;
+	
+	
+	public function __construct(BasketRepositoryContract    $basketRepository,
+			ContactRepositoryContract   $contactRepository,
+			ConfigRepository            $configRepository)
+	{
+		$this->basketRepository     = $basketRepository;
+		$this->contactRepository    = $contactRepository;
+		$this->configRepository     = $configRepository;
+	}
+	
 	/**
 	 * Check the configuration if the payment method is active
 	 * Return true if the payment method is active, else return false
@@ -22,18 +48,8 @@ class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 	 */
 	public function isActive( 
 			ConfigRepository $configRepository,
-			BasketRepositoryContract $basketRepositoryContract):bool
-			{
+			BasketRepositoryContract $basketRepositoryContract):bool{
 				/** @var bool $active */
-				$active = false;
-
-				/**
-				 * Check if Paymethod is active
-				 */
-				if( $configRepository->get('HeidelGatewayPlenty.paymethods.hgw_cc.active') )
-				{
-					$active = true;
-				}
 				$active = true;
 				return $active;
 	}
@@ -50,10 +66,10 @@ class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 		
 		if(!strlen($name))
 		{
-			$name = 'TestZahlart';
+			$name = 'Heidelpay CD-Edition Kreditkarte';
 		}
 
-		return $name;
+		eturn $name;
 
 	}
 
@@ -65,9 +81,9 @@ class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 	 */
 	public function getIcon( ConfigRepository $configRepository ):string
 	{
-		if($configRepository->get('PayUponPickup.logo') == 1)
+		if($configRepository->get('HeidelGatewayPlenty.paymethods.hgw_cc.logo') == 1)
 		{
-			return $configRepository->get('PayUponPickup.logo.url');
+			return $configRepository->get('HeidelGatewayPlenty.paymethods.hgw_cc.logo');
 		}
 		return '';
 	}
@@ -80,17 +96,6 @@ class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 	 */
 	public function getDescription( ConfigRepository $configRepository ):string
 	{
-		if($configRepository->get('PayUponPickup.infoPage.type') == 1)
-		{
-			return $configRepository->get('PayUponPickup.infoPage.intern');
-		}
-		elseif ($configRepository->get('PayUponPickup.infoPage.type') == 2)
-		{
-			return $configRepository->get('PayUponPickup.infoPage.extern');
-		}
-		else
-		{
-			return '';
-		}
+		return '';
 	}
 }
