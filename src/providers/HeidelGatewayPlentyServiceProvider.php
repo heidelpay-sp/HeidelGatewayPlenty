@@ -10,6 +10,7 @@ use Plenty\Modules\Basket\Events\Basket\AfterBasketCreate;
 use Plenty\Modules\Basket\Events\Basket\AfterBasketChanged;
 use Plenty\Modules\Basket\Events\BasketItem\AfterBasketItemAdd;
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodContainer;
+
 use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
 use HeidelGatewayPlenty\Methods\HeidelGatewayPlentyPaymentMethod;
 
@@ -38,9 +39,13 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 	{
 		// Create the ID of the payment method if it doesn't exist yet
 		$paymentHelper->createMopIfNotExists();
-
+		
+		/**
+		 * @todo hier alle Paymethoden Registrieren
+		 */
+		
 		// Register the Pay upon pickup payment method in the payment method container
-		$payContainer->register('plenty_payuponpickup::PAYUPONPICKUP', HeidelGatewayPlentyPaymentMethod::class,
+		$payContainer->register('HeidelGatewayPlenty::CC', HeidelGatewayPlentyPaymentMethod::class,
 				[ AfterBasketChanged::class, AfterBasketItemAdd::class, AfterBasketCreate::class ]
 				);
 
