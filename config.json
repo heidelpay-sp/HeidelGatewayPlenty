@@ -81,8 +81,8 @@
 		    "possibleValues": {
 		     "CC.DB" 	: "Debit",
              "CC.PA" 	: "Reservierung",
-             "CC.RG.DB" 	: "Registrierung mit Debit",
-             "CC.RG.PA" 	: "Registrierung mit Reservierung"
+             "CC.RG.DB" : "Registrierung mit Debit",
+             "CC.RG.PA" : "Registrierung mit Reservierung"
 		   	},
 		    "default": "CC.DB"
 		},
@@ -188,7 +188,7 @@
             "default"	: "31HA07BC8142C5A171749CDAA43365D2"
         },
         {
-            "tab"       : "Zahlart Sofort&uuml;berweisung",
+            "tab"       : "Zahlart Sofortüberweisung",
             "key"       : "paymethods.hgw_sue.active",
             "label"     : "Aktiv",
             "type"      : "checkbox",
