@@ -96,6 +96,6 @@ class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 	 */
 	public function getDescription( ConfigRepository $configRepository ):string
 	{
-		return '';
+		return 'Testbeschreibung';
 	}
 }
