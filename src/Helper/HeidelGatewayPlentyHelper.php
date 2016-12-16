@@ -39,9 +39,9 @@ class HeidelGatewayPlentyHelper
 		if($this->getPaymentMethod() == 'no_paymentmethod_found')
 		{
 			$paymentMethodData = array( 
-					'pluginKey' 	=> 'plenty_payuponpickup',
-					'paymentKey' 	=> 'PAYUPONPICKUP',
-					'name' 			=> 'Pay upon pickup'
+					'pluginKey' 	=> 'Creditcard',
+					'paymentKey' 	=> 'CREDITCARD',
+					'name' 			=> 'Kreditkarte'
 					
 			);
 
@@ -57,13 +57,13 @@ class HeidelGatewayPlentyHelper
 	 */
 	public function getPaymentMethod()
 	{
-		$paymentMethods = $this->paymentMethodRepository->allForPlugin('plenty_payuponpickup');
+		$paymentMethods = $this->paymentMethodRepository->allForPlugin('Creditcard');
 
 		if( !is_null($paymentMethods) )
 		{
 			foreach($paymentMethods as $paymentMethod)
 			{
-				if($paymentMethod->paymentKey == 'PAYUPONPICKUP')
+				if($paymentMethod->paymentKey == 'CREDITCARD')
 				{
 					return $paymentMethod->id;
 				}
