@@ -64,7 +64,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 				{
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
-						$event->setValue('<h1>Pay upon pickup<h1>');
+						$event->setValue('<h1>Kreditkarte<h1>');
 						$event->setType('htmlContent');
 					}
 				});
