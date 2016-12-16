@@ -12,7 +12,7 @@ use Plenty\Modules\Basket\Events\BasketItem\AfterBasketItemAdd;
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodContainer;
 
 use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
-use HeidelGatewayPlenty\Methods\HeidelGatewayPlentyPaymentMethod;
+use HeidelGatewayPlenty\Methods\CreditcardPaymentMethod;
 
 /**
  * Class PayUponPickupServiceProvider
