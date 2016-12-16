@@ -52,40 +52,40 @@
 		    "default": "0"
 		},
 		
-		
+				
 		{
-            "tab"       : "Grundeinstellungen",
-            "key"       : "basicData.hgw_cc.name",
-            "label"     : "Anzeigename Kreditkarte",
+            "tab"       : "Zahlart Kreditkarte",
+            "key"       : "paymethods.hgw_cc.name",
+            "label"     : "Anzeigename",
             "type"      : "text",
             "default"	: "Heidelpay CD-Edition Kreditkarte"
         },
         {
-            "tab"       : "Grundeinstellungen",
-            "key"       : "basicData.hgw_cc.channel",
-            "label"     : "Channel Kreditkarte",
+            "tab"       : "Zahlart Kreditkarte",
+            "key"       : "paymethods.hgw_cc.channel",
+            "label"     : "Channel",
             "type"      : "text",
             "default"	: "31HA07BC8142C5A171744F3D6D155865"
         },
         {
-            "tab"       : "Grundeinstellungen",
-            "key"       : "basicData.hgw_cc.channel",
-            "label"     : "Channel Kreditkarte Abo",
+            "tab"       : "Zahlart Kreditkarte",
+            "key"       : "paymethods.hgw_cc.channel",
+            "label"     : "Channel Abo",
             "type"      : "text",
             "default"	: ""
         },
         {
-            "tab"       : "Grundeinstellungen",
-            "key"       : "basicData.hgw_cc.active",
-            "label"     : "Kreditkarte CC Aktiv",
+            "tab"       : "Zahlart Kreditkarte",
+            "key"       : "paymethods.hgw_cc.active",
+            "label"     : "Aktiv",
             "type"      : "checkbox",
             "default"	: false
         },
         
         {
-		    "tab": "Grundeinstellungen",
-		    "key": "basicData.hgw_cc.bookingMode",
-		    "label": "Kreditkarte Buchungsmodus",
+		    "tab": "Zahlart Kreditkarte",
+		    "key": "paymethods.hgw_cc.bookingMode",
+		    "label": "Buchungsmodus",
 		    "type": "dropdown",
 		    "possibleValues": {
 		     "CC.DB" 	: "Debit",
@@ -96,63 +96,12 @@
 		    "default": "CC.DB"
 		},
 		{
-            "tab"       : "Grundeinstellungen",
-            "key"       : "basicData.hgw_cc.logo",
-            "label"     : "Kreditkarte Logo Url",
+            "tab"       : "Zahlart Kreditkarte",
+            "key"       : "paymethods.hgw_cc.logo",
+            "label"     : "Logo Url",
             "type"      : "text",
             "default"	: ""
         },
-		
-		
-/* 		{ */
-/*             "tab"       : "Zahlart Kreditkarte", */
-/*             "key"       : "paymethods.hgw_cc.name", */
-/*             "label"     : "Anzeigename", */
-/*             "type"      : "text", */
-/*             "default"	: "Heidelpay CD-Edition Kreditkarte" */
-/*         }, */
-/*         { */
-/*             "tab"       : "Zahlart Kreditkarte", */
-/*             "key"       : "paymethods.hgw_cc.channel", */
-/*             "label"     : "Channel", */
-/*             "type"      : "text", */
-/*             "default"	: "31HA07BC8142C5A171744F3D6D155865" */
-/*         }, */
-/*         { */
-/*             "tab"       : "Zahlart Kreditkarte", */
-/*             "key"       : "paymethods.hgw_cc.channel", */
-/*             "label"     : "Channel Abo", */
-/*             "type"      : "text", */
-/*             "default"	: "" */
-/*         }, */
-/*         { */
-/*             "tab"       : "Zahlart Kreditkarte", */
-/*             "key"       : "paymethods.hgw_cc.active", */
-/*             "label"     : "Aktiv", */
-/*             "type"      : "checkbox", */
-/*             "default"	: false */
-/*         }, */
-        
-/*         { */
-/* 		    "tab": "Zahlart Kreditkarte", */
-/* 		    "key": "paymethods.hgw_cc.bookingMode", */
-/* 		    "label": "Buchungsmodus", */
-/* 		    "type": "dropdown", */
-/* 		    "possibleValues": { */
-/* 		     "CC.DB" 	: "Debit", */
-/*              "CC.PA" 	: "Reservierung", */
-/*              "CC.RG.DB" : "Registrierung mit Debit", */
-/*              "CC.RG.PA" : "Registrierung mit Reservierung" */
-/* 		   	}, */
-/* 		    "default": "CC.DB" */
-/* 		}, */
-/* 		{ */
-/*             "tab"       : "Zahlart Kreditkarte", */
-/*             "key"       : "paymethods.hgw_cc.logo", */
-/*             "label"     : "Logo Url", */
-/*             "type"      : "text", */
-/*             "default"	: "" */
-/*         }, */
                 
         
         {
