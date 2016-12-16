@@ -45,7 +45,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 		 */
 		
 		// Register the Pay upon pickup payment method in the payment method container
-		$payContainer->register('HeidelGatewayPlenty::CREDITCARD', HeidelGatewayPlentyPaymentMethod::class,
+		$payContainer->register(
+				'HeidelGatewayPlenty::CREDITCARD', 
+				HeidelGatewayPlentyPaymentMethod::class,
 				[ AfterBasketChanged::class, AfterBasketItemAdd::class, AfterBasketCreate::class ]
 				);
 
