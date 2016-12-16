@@ -62,7 +62,7 @@ class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 	 */
 	public function getName( ConfigRepository $configRepository ):string
 	{
-		$name = $configRepository->get('HeidelGatewayPlenty.paymethods.hgw_cc.name');
+		$name = $configRepository->get('HeidelGatewayPlenty.basicData.hgw_cc.name');
 		
 		if(!strlen($name))
 		{
