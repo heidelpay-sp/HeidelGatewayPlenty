@@ -32,7 +32,8 @@ class CreditcardPaymentMethod extends PaymentMethodService
 	public function __construct(
 			BasketRepositoryContract    $basketRepository,
 // 			ContactRepositoryContract   $contactRepository,
-			ConfigRepository            $configRepository)
+			ConfigRepository            $configRepository
+			)
 	{
 		$this->basketRepository     = $basketRepository;
 // 		$this->contactRepository    = $contactRepository;
