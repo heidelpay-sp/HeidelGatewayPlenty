@@ -30,11 +30,11 @@ class HeidelGatewayPlentyPaymentMethod extends PaymentMethodService
 	
 	
 	public function __construct(BasketRepositoryContract    $basketRepository,
-// 			ContactRepositoryContract   $contactRepository,
+			ContactRepositoryContract   $contactRepository,
 			ConfigRepository            $configRepository)
 	{
 		$this->basketRepository     = $basketRepository;
-// 		$this->contactRepository    = $contactRepository;
+		$this->contactRepository    = $contactRepository;
 		$this->configRepository     = $configRepository;
 	}
 	
