@@ -21,7 +21,7 @@ class CreditcardPaymentMethod extends PaymentMethodService
 	/**
 	 * @var ContactRepositoryContract
 	 */
-	private $contactRepository;
+// 	private $contactRepository;
 	
 	/**
 	 * @var ConfigRepository
