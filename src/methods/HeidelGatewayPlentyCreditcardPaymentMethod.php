@@ -10,7 +10,7 @@ use Plenty\Modules\Basket\Models\Basket;
  * Class PayUponPickupPaymentMethod
  * @package PayUponPickup\Methods
  */
-class CreditcardPaymentMethod extends PaymentMethodService
+class HeidelGatewayPlentyCreditcardPaymentMethod extends PaymentMethodService
 {
 	
 	/**
