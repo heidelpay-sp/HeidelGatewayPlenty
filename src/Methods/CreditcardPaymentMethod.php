@@ -2,9 +2,10 @@
 namespace HeidelGatewayPlenty\Methods;
 
 use Plenty\Plugin\ConfigRepository;
+use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodService;
 use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
-use Plenty\Modules\Basket\Models\Basket;
+// use Plenty\Modules\Basket\Models\Basket;
 
 /**
  * Class PayUponPickupPaymentMethod
