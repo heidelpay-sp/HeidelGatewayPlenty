@@ -57,7 +57,7 @@ class HeidelGatewayPlentyHelper
 	 */
 	public function getPaymentMethod()
 	{
-		$paymentMethods = $this->paymentMethodRepository->allForPlugin('Creditcard');
+		$paymentMethods = $this->paymentMethodRepository->allForPlugin('HeidelGatewayPlenty');
 
 		if( !is_null($paymentMethods) )
 		{
