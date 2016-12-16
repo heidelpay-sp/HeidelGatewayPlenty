@@ -39,7 +39,7 @@ class HeidelGatewayPlentyHelper
 		if($this->getPaymentMethod() == 'no_paymentmethod_found')
 		{
 			$paymentMethodData = array( 
-					'pluginKey' 	=> 'Creditcard',
+					'pluginKey' 	=> 'HeidelGatewayPlenty',
 					'paymentKey' 	=> 'CREDITCARD',
 					'name' 			=> 'Kreditkarte'
 					
