@@ -7,6 +7,6 @@
    	"type"              : "payment",
 	"require"           : [],
     "namespace"         : "HeidelGatewayPlenty",
-    "serviceProvider"  	: "HeidelGatewayPlenty\\Providers\\HeidelpayServiceProvider"
+    "serviceProvider"  	: "HeidelGatewayPlenty\\Providers\\HeidelGatewayPlentyServiceProvider"
 }
 
