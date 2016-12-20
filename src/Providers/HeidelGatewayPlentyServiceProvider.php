@@ -6,6 +6,7 @@ use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Modules\Payment\Events\Checkout\ExecutePayment;
 use Plenty\Modules\Payment\Events\Checkout\GetPaymentMethodContent;
+use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
 use Plenty\Modules\Basket\Events\Basket\AfterBasketCreate;
 use Plenty\Modules\Basket\Events\Basket\AfterBasketChanged;
 use Plenty\Modules\Basket\Events\BasketItem\AfterBasketItemAdd;
@@ -35,7 +36,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 	public function boot( 
 			HeidelGatewayPlentyHelper $paymentHelper,
 			PaymentMethodContainer $payContainer,
-			Dispatcher $eventDispatcher)
+			Dispatcher $eventDispatcher,
+			BasketRepositoryContract $warenkorb
+			)
 	{
 		// Create the ID of the payment method if it doesn't exist yet
 		$paymentHelper->createMopIfNotExists();
@@ -54,18 +57,20 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 				{
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
+						
 						$event->setValue('<h1>Kreditkarte<h1>');
 						$event->setType('htmlContent');
 					}
 				});
+		
+		
 		// Listen for the event that gets the payment method content
-		
-		
 		$eventDispatcher->listen(GetPaymentMethodContent::class,
-				function(GetPaymentMethodContent $event) use( $paymentHelper)
+				function(GetPaymentMethodContent $event) use( $paymentHelper, $warenkorb)
 				{
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
+						$basket = $basket->load();
 						$event->setValue('');
 						$event->setType('continue');
 					}
