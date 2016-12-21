@@ -26,7 +26,7 @@ class CreatePaymentMethod
 	 */
 	public function __construct(
 			PaymentMethodRepositoryContract $paymentMethodRepositoryContract,
-			PaymentHelper $paymentHelper) {
+			HeidelGatewayPlentyHelper $paymentHelper) {
 				$this->paymentMethodRepositoryContract = $paymentMethodRepositoryContract;
 				$this->paymentHelper = $paymentHelper;
 	}
