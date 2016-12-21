@@ -49,8 +49,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 		
 		// Register Creditcard payment method in the payment method container
 		$payContainer->register('HeidelGatewayPlenty::CREDITCARD', CreditcardPaymentMethod::class, [ AfterBasketChanged::class, AfterBasketItemAdd::class, AfterBasketCreate::class ]);
-		
-		
+				
 		// Listen for the event that executes the payment
 		$eventDispatcher->listen(ExecutePayment::class,
 				function(ExecutePayment $event) use( $paymentHelper)
@@ -70,7 +69,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 				{
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
-						$basket = $basket->load();
+// 						$basket = $basket->load();
 						$event->setValue('');
 						$event->setType('continue');
 					}
