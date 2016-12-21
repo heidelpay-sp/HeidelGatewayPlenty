@@ -57,7 +57,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
 						
-						$event->setValue('<h1>Kreditkarte<h1>');
+						$event->setValue('<h1>Heidelpay CD-Edition Kreditkarte<h1>');
 						$event->setType('htmlContent');
 					}
 				});

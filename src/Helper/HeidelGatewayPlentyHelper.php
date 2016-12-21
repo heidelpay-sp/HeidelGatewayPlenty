@@ -41,7 +41,7 @@ class HeidelGatewayPlentyHelper
 			$paymentMethodData = array( 
 					'pluginKey' 	=> 'HeidelGatewayPlenty',
 					'paymentKey' 	=> 'CREDITCARD',
-					'name' 			=> 'Kreditkarte'
+					'name' 			=> 'Heidelpay CD-Edition Kreditkarte'
 					
 			);
 
