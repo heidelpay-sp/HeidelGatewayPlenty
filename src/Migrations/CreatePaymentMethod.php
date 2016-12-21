@@ -15,18 +15,19 @@ class CreatePaymentMethod
 	 */
 	private $paymentMethodRepositoryContract;
 	/**
-	 * @var PaymentHelper
+	 * @var HeidelGatewayPlentyHelper
 	 */
 	private $paymentHelper;
 	/**
 	 * CreatePaymentMethod constructor.
 	 *
 	 * @param PaymentMethodRepositoryContract $paymentMethodRepositoryContract
-	 * @param PaymentHelper $paymentHelper
+	 * @param HeidelGatewayPlentyHelper $paymentHelper
 	 */
 	public function __construct(
 			PaymentMethodRepositoryContract $paymentMethodRepositoryContract,
-			HeidelGatewayPlentyHelper $paymentHelper) {
+			HeidelGatewayPlentyHelper $paymentHelper
+			) {
 				$this->paymentMethodRepositoryContract = $paymentMethodRepositoryContract;
 				$this->paymentHelper = $paymentHelper;
 	}
