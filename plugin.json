@@ -7,6 +7,8 @@
    	"type"              : "payment",
 	"require"           : [],
     "namespace"         : "HeidelGatewayPlenty",
-    "serviceProvider"  	: "HeidelGatewayPlenty\\Providers\\HeidelGatewayPlentyServiceProvider"
+    "serviceProvider"  	: "HeidelGatewayPlenty\\Providers\\HeidelGatewayPlentyServiceProvider", 
+    
+    "runOnBuild"		: "HeidelGatewayPlenty\\Migrations\\CreatePaymentMethod"
 }
 
