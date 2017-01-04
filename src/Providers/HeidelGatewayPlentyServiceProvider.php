@@ -14,6 +14,7 @@ use Plenty\Modules\Payment\Method\Contracts\PaymentMethodContainer;
 
 use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
 use HeidelGatewayPlenty\Methods\CreditcardPaymentMethod;
+use HeidelGatewayPlenty\Services\PaymentService;
 
 /**
  * Class PayUponPickupServiceProvider
@@ -37,6 +38,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 			HeidelGatewayPlentyHelper $paymentHelper,
 			PaymentMethodContainer $payContainer,
 			Dispatcher $eventDispatcher,
+			PaymentService $paymentService,
 			BasketRepositoryContract $warenkorb
 			)
 	{
@@ -65,13 +67,13 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 		
 		// Listen for the event that gets the payment method content
 		$eventDispatcher->listen(GetPaymentMethodContent::class,
-				function(GetPaymentMethodContent $event) use( $paymentHelper, $warenkorb)
+				function(GetPaymentMethodContent $event) use( $paymentHelper, $warenkorb, $paymentService)
 				{
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
 						$warenkorb = $warenkorb->load();
-						$event->setValue('');
-						$event->setType('continue');
+						$event->setValue($paymentService->getPaymentContend($warenkorb));
+						$event->setType($paymentService->getReturnType());
 					}
 				});
 
