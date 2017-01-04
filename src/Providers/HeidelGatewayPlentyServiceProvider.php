@@ -14,7 +14,6 @@ use Plenty\Modules\Payment\Method\Contracts\PaymentMethodContainer;
 
 use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
 use HeidelGatewayPlenty\Methods\CreditcardPaymentMethod;
-use HeidelGatewayPlenty\Services\PaymentService;
 
 /**
  * Class PayUponPickupServiceProvider
@@ -34,51 +33,48 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 	 * @param PaymentMethodContainer $payContainer
 	 * @param Dispatcher $eventDispatcher
 	 */
-	public function boot( 
+	public function boot(
 			HeidelGatewayPlentyHelper $paymentHelper,
 			PaymentMethodContainer $payContainer,
 			Dispatcher $eventDispatcher,
-			PaymentService $paymentService,
 			BasketRepositoryContract $warenkorb
 			)
 	{
 		// Create the ID of the payment method if it doesn't exist yet
 		$paymentHelper->createMopIfNotExists();
-		
+
 		/**
 		 * @todo hier alle Paymethoden Registrieren
 		 */
-		
+
 		// Register Creditcard payment method in the payment method container
 		$payContainer->register('HeidelGatewayPlenty::CREDITCARD', CreditcardPaymentMethod::class, [ AfterBasketChanged::class, AfterBasketItemAdd::class, AfterBasketCreate::class ]);
-				
+
 		// Listen for the event that executes the payment
 		$eventDispatcher->listen(ExecutePayment::class,
 				function(ExecutePayment $event) use( $paymentHelper)
 				{
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
-						
+
 						$event->setValue('<h1>Heidelpay CD-Edition Kreditkarte<h1>');
 						$event->setType('htmlContent');
 					}
-				});
-		
-		
+		});
+
+
 		// Listen for the event that gets the payment method content
 		$eventDispatcher->listen(GetPaymentMethodContent::class,
-				function(GetPaymentMethodContent $event) use( $paymentHelper, $warenkorb, $paymentService)
+				function(GetPaymentMethodContent $event) use( $paymentHelper, $warenkorb)
 				{
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
 						$warenkorb = $warenkorb->load();
-						$event->setValue($paymentService->getPaymentContend($warenkorb));
-						$event->setType($paymentService->getReturnType());
+						$event->setValue('');
+						$event->setType('continue');
 					}
-				});
+		});
 
-		
+
 	}
-	
-		
 }

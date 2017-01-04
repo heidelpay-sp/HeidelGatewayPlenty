@@ -5,10 +5,10 @@ use Plenty\Plugin\RouteServiceProvider;
 use Plenty\Plugin\Routing\Router;
 
 /**
- * Class HeidelGatewayPlentyRouteServiceProvider
+ * Class PayPalRouteServiceProvider
  * @package PayPal\Providers
  */
-class HeidelGatewayPlentyRouteServiceProvider extends RouteServiceProvider
+class PayPalRouteServiceProvider extends RouteServiceProvider
 {
 	/**
 	 * @param Router $router
@@ -23,4 +23,4 @@ class HeidelGatewayPlentyRouteServiceProvider extends RouteServiceProvider
 
 
 
-}	
+}
