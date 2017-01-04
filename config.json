@@ -55,10 +55,10 @@
 		
 		{
             "tab"       : "Grundeinstellungen",
-            "key"       : "basicData.hgw_cc.name",
+            "key"       : "basicData.hgwcc.name",
             "label"     : "Anzeigename Kreditkarte",
             "type"      : "text",
-            "default"	: "Heidelpay CD-Edition Kreditkarte"
+            "default"	: "Heidelpay CD-Edition Kreditkarte DEFAULT"
         },
         {
             "tab"       : "Grundeinstellungen",
