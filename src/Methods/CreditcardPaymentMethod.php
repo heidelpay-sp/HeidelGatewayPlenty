@@ -2,10 +2,10 @@
 namespace HeidelGatewayPlenty\Methods;
 
 use Plenty\Plugin\ConfigRepository;
-use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
+// use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodService;
 use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
-use Plenty\Modules\Basket\Models\Basket;
+// use Plenty\Modules\Basket\Models\Basket;
 
 /**
  * Class PayUponPickupPaymentMethod
@@ -65,11 +65,11 @@ class CreditcardPaymentMethod extends PaymentMethodService
 	 */
 	public function getName( ConfigRepository $configRepository )
 	{
-		$name = $configRepository->get('HeidelGatewayPlenty.basicData.hgw_cc.name');
+		$name = $configRepository->get('HeidelGatewayPlenty.basicData.hgwcc.name');
 		
 		if(!strlen($name))
 		{
-			$name = 'Heidelpay CD-Edition Kreditkarte';
+			$name = "Heidelpay CD-Edition Kreditkarte GETNAME ".$name." Test";
 		}
 
 		return $name;
