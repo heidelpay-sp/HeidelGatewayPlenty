@@ -77,4 +77,6 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
 		
 	}
+	
+		
 }
