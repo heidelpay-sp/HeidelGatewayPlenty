@@ -65,7 +65,7 @@ class CreditcardPaymentMethod extends PaymentMethodService
 	 */
 	public function getName( ConfigRepository $configRepository )
 	{
-		$name = $configRepository->get('HeidelGatewayPlenty.basicData.hgwcc.name');
+		$name = $configRepository->get('basicData.hgwcc.name');
 		
 		if(!strlen($name))
 		{
