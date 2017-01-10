@@ -71,7 +71,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 					{
 						$warenkorb = $warenkorb->load();
 						
-						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>'.'</br>'.print_r($warenkorb,1). ' <- Warenkorb');
+						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>'.'</br>'.var_dump($warenkorb). ' <- Warenkorb');
 						$event->setType('htmlContent');
 					}
 		});
