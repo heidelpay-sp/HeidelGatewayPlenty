@@ -46,8 +46,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 			HeidelGatewayPlentyHelper $paymentHelper,
 			PaymentMethodContainer $payContainer,
 			Dispatcher $eventDispatcher,
-			BasketRepositoryContract $warenkorb,
-			ConfigRepository $configRepository
+			BasketRepositoryContract $warenkorb
+// 			ConfigRepository $configRepository
 			)
 	{
 		// Create the ID of the payment method if it doesn't exist yet
@@ -81,8 +81,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 					{
 						$warenkorb = $warenkorb->load();
 						
-						$channel = $configRepository->get('HeidelGatewayPlenty.hgw_ccChannel');
-						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>'.'</br>'.$channel.' hier ChannelId');
+						$channel = $this->configRepository->get('HeidelGatewayPlenty.hgw_ccChannel');
+						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>' .$channel.' hier ChannelId');
 						$event->setType('htmlContent');
 					}
 		});
