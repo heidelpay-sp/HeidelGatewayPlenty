@@ -23,6 +23,13 @@ use HeidelGatewayPlenty\Methods\CreditcardPaymentMethod;
  */
 class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 {
+	
+	private $configRepository;
+	
+	public function __construct(ConfigRepository $configRepository){
+		$this->configRepository = $configRepository;
+	}
+	
 	public function register()
 	{
 
