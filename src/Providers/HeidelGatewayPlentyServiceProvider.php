@@ -70,7 +70,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
 						$warenkorb = $warenkorb->load();
-						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>');
+						
+						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>'.'</br>'.print_r($warenkorb,1));
 						$event->setType('htmlContent');
 					}
 		});
