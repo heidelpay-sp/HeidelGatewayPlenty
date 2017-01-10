@@ -89,7 +89,7 @@ class CreditcardPaymentMethod extends PaymentMethodService
 		{
 			$icon = $this->configRepository->get('HeidelGatewayPlenty.basicDatahgw_cclogo');
 		} else {
-			$icon = 'layout/plugins/HeidelGatewayPlenty/images/logos/hplog.png';
+			$icon = 'plugins/HeidelGatewayPlenty/images/logos/hplog.png';
 		}
 		return $icon;
 	}
