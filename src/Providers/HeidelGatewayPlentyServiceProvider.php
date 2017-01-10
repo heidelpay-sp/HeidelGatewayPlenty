@@ -24,11 +24,11 @@ use HeidelGatewayPlenty\Methods\CreditcardPaymentMethod;
 class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 {
 	
-	private $configRepository;
+// 	private $configRepository;
 	
-	public function __construct(ConfigRepository $configRepository){
-		$this->configRepository = $configRepository;
-	}
+// 	public function __construct(ConfigRepository $configRepository){
+// 		$this->configRepository = $configRepository;
+// 	}
 	
 	public function register()
 	{
@@ -46,7 +46,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 			HeidelGatewayPlentyHelper $paymentHelper,
 			PaymentMethodContainer $payContainer,
 			Dispatcher $eventDispatcher,
-			BasketRepositoryContract $warenkorb
+			BasketRepositoryContract $warenkorb,
+			ConfigRepository $configRepository
 			)
 	{
 		// Create the ID of the payment method if it doesn't exist yet
@@ -79,7 +80,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
 						$warenkorb = $warenkorb->load();
-						$configRepository = new ConfigRepository;
+						
 						$channel = $configRepository->get('hgw_cc.channel');
 						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>'.'</br>'.$channel.' hier ChannelId');
 						$event->setType('htmlContent');
