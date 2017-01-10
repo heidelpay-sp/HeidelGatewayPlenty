@@ -12,6 +12,8 @@ use Plenty\Modules\Basket\Events\Basket\AfterBasketChanged;
 use Plenty\Modules\Basket\Events\BasketItem\AfterBasketItemAdd;
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodContainer;
 
+use Plenty\Plugin\ConfigRepository;
+
 use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
 use HeidelGatewayPlenty\Methods\CreditcardPaymentMethod;
 
@@ -70,8 +72,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
 						$warenkorb = $warenkorb->load();
-						
-						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>'.'</br>'.var_dump($warenkorb). ' <- Warenkorb');
+						$configRepository = new ConfigRepository;
+						$channel = $configRepository->get('hgw_cc.channel');
+						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>'.'</br>'.$channel.' hier ChannelId');
 						$event->setType('htmlContent');
 					}
 		});
