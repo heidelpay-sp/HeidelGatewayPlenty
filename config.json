@@ -97,7 +97,7 @@
 		},
 		{
             "tab"       : "Grundeinstellungen",
-            "key"       : "basicData.hgw_cc.logo",
+            "key"       : "basicDatahgw_cclogo",
             "label"     : "Kreditkarte Logo Url",
             "type"      : "text",
             "default"	: ""
