@@ -1,0 +1,22 @@
+{
+	"name" : "heidelpay/HeidelGatewayPlenty",
+	"homepage" : "https://dev.heidelpay.de",
+	"minimum-stability" : "stable",
+	"license" : "Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.",
+	"support" : {
+		"email" : "development@heidelpay.de"
+	},
+	"authors" : [{
+			"name" : "Sascha Pflueger",
+			"email" : "development@heidelpay.de"
+		}
+	],
+	"repositories" : [{
+			"type" : "composer",
+			"url" : "https://dev.heidelpay.de/packages"
+		}
+	],
+	"require" : {
+		"heidelpay/php-api" : "16.12.19"
+	}
+}
