@@ -16,6 +16,7 @@ use Plenty\Plugin\ConfigRepository;
 
 use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
 use HeidelGatewayPlenty\Methods\CreditcardPaymentMethod;
+use HeidelGatewayPlenty\Services\PaymentService;
 
 /**
  * Class PayUponPickupServiceProvider
@@ -23,13 +24,7 @@ use HeidelGatewayPlenty\Methods\CreditcardPaymentMethod;
  */
 class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 {
-	
-	private $configRepository;
-	
-	public function __construct(ConfigRepository $configRepository){
-		$this->configRepository = $configRepository;
-	}
-	
+		
 	public function register()
 	{
 
@@ -46,7 +41,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 			HeidelGatewayPlentyHelper $paymentHelper,
 			PaymentMethodContainer $payContainer,
 			Dispatcher $eventDispatcher,
-			BasketRepositoryContract $warenkorb
+			BasketRepositoryContract $warenkorb,
+			PaymentService $paymentService
 // 			ConfigRepository $configRepository
 			)
 	{
@@ -75,13 +71,13 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
 		// Listen for the event that gets the payment method content
 		$eventDispatcher->listen(GetPaymentMethodContent::class,
-				function(GetPaymentMethodContent $event) use( $paymentHelper, $warenkorb)
+				function(GetPaymentMethodContent $event) use( $paymentHelper, $warenkorb, $paymentService)
 				{
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
 						$warenkorb = $warenkorb->load();
 						
-						$channel = $this->configRepository->get('HeidelGatewayPlenty.hgw_ccChannel');
+						$channel = $paymentService->getConfigParams();
 						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>' .$channel.' hier ChannelId');
 						$event->setType('htmlContent');
 					}
