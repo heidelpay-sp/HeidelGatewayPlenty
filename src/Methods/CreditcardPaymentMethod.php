@@ -1,11 +1,14 @@
 <?php
 namespace HeidelGatewayPlenty\Methods;
-
+require_once '../vendor/autoload.php';
 use Plenty\Plugin\ConfigRepository;
 // use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodService;
 use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
 // use Plenty\Modules\Basket\Models\Basket;
+use \Heidelpay\PhpApi\PaymentMethodes\CreditCardPaymentMethod;
+
+
 
 /**
  * Class PayUponPickupPaymentMethod
