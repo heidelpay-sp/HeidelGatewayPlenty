@@ -69,7 +69,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
 		// Listen for the event that gets the payment method content
 		$eventDispatcher->listen(GetPaymentMethodContent::class,
-				function(GetPaymentMethodContent $event) use( $paymentHelper, $warenkorb)
+				function(GetPaymentMethodContent $event) use( $paymentHelper, $warenkorb, $configRepository)
 				{
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
