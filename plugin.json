@@ -1,6 +1,6 @@
 {
    	"version"           : "16.11.01",
-   	"name"              : "HeidelGatewayPlenty",
+   	"name"              : "HeidelpayGatewayPlenty",
    	"description"       : "",
    	"author"            : "Heidelberger Payment GmbH",
    	"keywords"          : ["plentymarkets", "plugins", "payment", "heidelpay", "bezahlen", "checkout"],
