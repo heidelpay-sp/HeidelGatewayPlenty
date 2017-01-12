@@ -65,11 +65,11 @@ class CreditcardPaymentMethod extends PaymentMethodService
 	 */
 	public function getName( ConfigRepository $configRepository )
 	{
-		$name = $this->configRepository->get('HeidelGatewayPlenty.basicDataHgwccName');
+		$name = $configRepository->get('HeidelGatewayPlenty.basicDataHgwccName');
 		
 		if(!strlen($name))
 		{
-			$name = "Heidelpay CD-Edition Kreditkarte GETNAME ".$name." Test";
+			$name = "Heidelpay CD-Edition Kreditkarte GETNAME Test";
 		}
 
 		return $name;
@@ -85,7 +85,7 @@ class CreditcardPaymentMethod extends PaymentMethodService
 	public function getIcon( ConfigRepository $configRepository ):string
 	{	
 		$icon = '';
-		if($this->configRepository->get('HeidelGatewayPlenty.basicDatahgw_cclogo') == 1)
+		if($configRepository->get('HeidelGatewayPlenty.basicDatahgw_cclogo') == 1)
 		{
 			$icon = $this->configRepository->get('HeidelGatewayPlenty.basicDatahgw_cclogo');
 		} else {
