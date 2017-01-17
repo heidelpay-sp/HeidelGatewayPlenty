@@ -69,7 +69,7 @@ class CreditcardPaymentMethod extends PaymentMethodService
 		
 		if(!strlen($name))
 		{
-			$name = "Heidelpay CD-Edition Kreditkarte GETNAME Test";
+			$name = "Heidelpay CD-Edition Kreditkarte";
 		}
 
 		return $name;
