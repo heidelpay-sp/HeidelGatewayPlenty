@@ -8,6 +8,9 @@
 	"require"           : [],
     "namespace"         : "HeidelGatewayPlenty",
     "serviceProvider"  	: "HeidelGatewayPlenty\\Providers\\HeidelGatewayPlentyServiceProvider", 
+    "dependencies"  	: {
+    						"heidelpay/php-api" : "17.01.17"
+    						}, 
     "runOnBuild"		: "HeidelGatewayPlenty\\Migrations\\CreatePaymentMethod"
 }
 
