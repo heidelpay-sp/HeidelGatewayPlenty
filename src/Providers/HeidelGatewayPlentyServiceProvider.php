@@ -2,20 +2,22 @@
 
 namespace HeidelGatewayPlenty\Providers;
 
-use Plenty\Plugin\ServiceProvider;
-use Plenty\Plugin\Events\Dispatcher;
+use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
+use Plenty\Modules\Basket\Events\Basket\AfterBasketChanged;
+use Plenty\Modules\Basket\Events\Basket\AfterBasketCreate;
+use Plenty\Modules\Basket\Events\BasketItem\AfterBasketItemAdd;
 use Plenty\Modules\Payment\Events\Checkout\ExecutePayment;
 use Plenty\Modules\Payment\Events\Checkout\GetPaymentMethodContent;
-use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
-use Plenty\Modules\Basket\Events\Basket\AfterBasketCreate;
-use Plenty\Modules\Basket\Events\Basket\AfterBasketChanged;
-use Plenty\Modules\Basket\Events\BasketItem\AfterBasketItemAdd;
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodContainer;
+use Plenty\Plugin\Events\Dispatcher;
+use Plenty\Plugin\ServiceProvider;
 
 use Plenty\Plugin\ConfigRepository;
 
 use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
 use HeidelGatewayPlenty\Methods\CreditcardPaymentMethod;
+
+use \Heidelpay\PhpApi\PaymentMethodes\CreditCardPaymentMethod;
 
 /**
  * Class PayUponPickupServiceProvider
@@ -76,6 +78,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 						$warenkorb = $warenkorb->load();
 						
 						$channel = $configRepository->get('HeidelGatewayPlenty.hgw_ccChannel');
+						
+						
 						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>' .$channel.' hier Channel');
 						$event->setType('htmlContent');
 					}
