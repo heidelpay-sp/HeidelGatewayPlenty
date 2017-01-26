@@ -54,7 +54,9 @@ class CreditcardPaymentMethod extends PaymentMethodService
 			ConfigRepository $configRepository,
 			BasketRepositoryContract $basketRepositoryContract):bool{
 				/** @var bool $active */
-				$active = true;
+				
+				$active = $configRepository->get('HeidelGatewayPlenty.hgw_cc_active');
+								
 				return $active;
 	}
 
@@ -66,7 +68,7 @@ class CreditcardPaymentMethod extends PaymentMethodService
 	 */
 	public function getName( ConfigRepository $configRepository )
 	{
-		$name = $configRepository->get('HeidelGatewayPlenty.basicDataHgwccName');
+		$name = $configRepository->get('HeidelGatewayPlenty.hgw_cc_name');
 		
 		if(!strlen($name))
 		{
