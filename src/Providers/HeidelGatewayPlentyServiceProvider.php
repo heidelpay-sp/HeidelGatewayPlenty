@@ -77,7 +77,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 					{
 						$warenkorb = $warenkorb->load();
 						
-						$channel = $configRepository->get('HeidelGatewayPlenty.hgw_ccChannel');
+						$channel = $configRepository->get('HeidelGatewayPlenty.hgw_cc_Channel');
+						$channel = $configRepository->get('HeidelGatewayPlenty.basicData.hgw_cc.channel');
 						
 						
 						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>' .$channel.' hier Channel');
