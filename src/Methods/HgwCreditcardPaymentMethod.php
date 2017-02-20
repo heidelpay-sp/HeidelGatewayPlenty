@@ -12,7 +12,7 @@ use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
  * Class PayUponPickupPaymentMethod
  * @package PayUponPickup\Methods
  */
-class CreditcardPaymentMethod extends PaymentMethodService
+class HgwCreditcardPaymentMethod extends PaymentMethodService
 {
 	
 	/**
