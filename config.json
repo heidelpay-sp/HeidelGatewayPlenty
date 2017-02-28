@@ -100,7 +100,7 @@
             "key"       : "hgw_cc_logo",
             "label"     : "Kreditkarte Logo Url",
             "type"      : "text",
-            "default"	: ""
+            "default"	: "layout/plugins/production/heidelgatewayplenty/images/logos/hplog.png"
         }
     ]
 
