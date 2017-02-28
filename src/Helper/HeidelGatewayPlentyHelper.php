@@ -40,7 +40,7 @@ class HeidelGatewayPlentyHelper
 		{
 			$paymentMethodData = array( 
 					'pluginKey' 	=> 'HeidelGatewayPlenty',
-					'paymentKey' 	=> 'CREDITCARD',
+					'paymentKey' 	=> 'HGWCREDITCARD',
 					'name' 			=> 'Heidelpay CD-Edition Kreditkarte'
 					
 			);
@@ -63,7 +63,7 @@ class HeidelGatewayPlentyHelper
 		{
 			foreach($paymentMethods as $paymentMethod)
 			{
-				if($paymentMethod->paymentKey == 'CREDITCARD')
+				if($paymentMethod->paymentKey == 'HGWCREDITCARD')
 				{
 					return $paymentMethod->id;
 				}

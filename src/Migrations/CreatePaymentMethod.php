@@ -43,7 +43,7 @@ class CreatePaymentMethod
 		{
 			$paymentMethodData = array( 
 					'pluginKey' => 'HeidelGatewayPlenty',
-					'paymentKey' => 'CREDITCARD',
+					'paymentKey' => 'HGWCREDITCARD',
 					'name' => 'Heidelpay CD-Edition Kreditkarte');
 			$this->paymentMethodRepositoryContract->createPaymentMethod($paymentMethodData);
 		}
