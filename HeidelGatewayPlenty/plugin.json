@@ -1,0 +1,16 @@
+{
+   	"version"           : "16.11.01",
+   	"name"              : "HeidelGatewayPlenty",
+   	"description"       : "",
+   	"author"            : "Heidelberger Payment GmbH",
+   	"keywords"          : ["plentymarkets", "plugins", "payment", "heidelpay", "bezahlen", "checkout"],
+   	"type"              : "payment",
+	"require"           : [],
+    "namespace"         : "HeidelGatewayPlenty",
+    "serviceProvider"  	: "HeidelGatewayPlenty\\Providers\\HeidelGatewayPlentyServiceProvider", 
+    "dependencies"  	: {
+    						"heidelpay/php-api" : "17.2.22"
+    						}, 
+    "runOnBuild"		: "HeidelGatewayPlenty\\Migrations\\CreatePaymentMethod"
+}
+
