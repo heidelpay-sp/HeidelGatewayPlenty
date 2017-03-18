@@ -2,9 +2,10 @@
 namespace HeidelGatewayPlenty\Methods;
 
 use Plenty\Plugin\ConfigRepository;
-// use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
+use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodService;
 use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
+
 // use Plenty\Modules\Basket\Models\Basket;
 
 
@@ -23,22 +24,21 @@ class HgwCreditcardPaymentMethod extends PaymentMethodService
 	/**
 	 * @var ContactRepositoryContract
 	 */
-// 	private $contactRepository;
+	private $contactRepository;
 	
 	/**
 	 * @var ConfigRepository
 	 */
 	private $configRepository;
 	
-	
 	public function __construct(
 			BasketRepositoryContract    $basketRepository,
-// 			ContactRepositoryContract   $contactRepository,
+ 			ContactRepositoryContract   $contactRepository,
 			ConfigRepository            $configRepository
 			)
 	{
 		$this->basketRepository     = $basketRepository;
-// 		$this->contactRepository    = $contactRepository;
+ 		$this->contactRepository    = $contactRepository;
 		$this->configRepository     = $configRepository;
 	}
 	
