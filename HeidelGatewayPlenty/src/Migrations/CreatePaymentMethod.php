@@ -2,6 +2,7 @@
 namespace HeidelGatewayPlenty\Migrations;
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodRepositoryContract;
 use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
+
 /**
  * Migration to create payment mehtods
  *
