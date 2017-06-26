@@ -1,9 +1,11 @@
 {
-   	"version"           : "16.11.01",
+   	"version"           : "17.06.20",
    	"marketplaceName"   : {"de":"Heidelpay CD-Edition Plugin für Plentymarkets 7","en":"Heidelpay CD-Edition Plugin "},
    	"name"              : "HeidelGatewayPlenty",
    	"description"       : "",
+   	"shortDescription"  : {"de":"Payment-Plugin für Plentymarkets 7 der Heidelberger Payment GmbH","en":"Payment-Plugin for Plentymarkets 7 of Heidelberger Payment GmbH"},
    	"author"            : "Heidelberger Payment GmbH",
+    "authorIcon"        : "The author icon",
    	"keywords"          : ["plentymarkets", "plugins", "payment", "heidelpay", "bezahlen", "checkout"],
    	"type"              : "payment",
 	"require"           : [],
@@ -12,6 +14,17 @@
     "dependencies"  	: {
     						"heidelpay/php-api" : "17.5.2"
     						}, 
-    "runOnBuild"		: "HeidelGatewayPlenty\\Migrations\\CreatePaymentMethod"
+    "runOnBuild"		: "HeidelGatewayPlenty\\Migrations\\CreatePaymentMethod",
+	"license"           : "The license for the plugin",
+    "isClosedSource"    : "False",
+//    "pluginIcon"        : "FileNameOfTheIcon",
+    "price"             : 0.00,
+    "categories"        : ["3519"],
+	"email"             : "support@heidelpay.de",
+    "phone"             : "",
+	"containers"        : [],
+    "dataProviders"     : [],
+    "javaScriptFiles"   : []
+
 }
 
