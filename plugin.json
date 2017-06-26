@@ -1,5 +1,6 @@
 {
    	"version"           : "16.11.01",
+   	"marketplaceName"   : {"de":"Heidelpay CD-Edition Plugin für Plentymarkets 7","en":"Heidelpay CD-Edition Plugin "},
    	"name"              : "HeidelGatewayPlenty",
    	"description"       : "",
    	"author"            : "Heidelberger Payment GmbH",
@@ -9,7 +10,7 @@
     "namespace"         : "HeidelGatewayPlenty",
     "serviceProvider"  	: "HeidelGatewayPlenty\\Providers\\HeidelGatewayPlentyServiceProvider", 
     "dependencies"  	: {
-    						"heidelpay/php-api" : "17.2.22"
+    						"heidelpay/php-api" : "17.5.2"
     						}, 
     "runOnBuild"		: "HeidelGatewayPlenty\\Migrations\\CreatePaymentMethod"
 }
