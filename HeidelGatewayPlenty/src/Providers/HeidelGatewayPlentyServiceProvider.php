@@ -90,7 +90,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
  						$paramsToSend['USER.LOGIN']			= $configRepository->get('HeidelGatewayPlenty.login');
  						$paramsToSend['USER.PWD']			= $configRepository->get('HeidelGatewayPlenty.password');
 																
-						$event->setValue('<h1>Heidelpay<h1>' .$paramsToSend['USER.LOGIN'].' hier USR.Pass');
+						$event->setValue('<h1>Heidelpay<h1>' .$paramsToSend['USER.LOGIN'].' hier USER.Login');
 						$event->setType('htmlContent');
 					}
 		});
