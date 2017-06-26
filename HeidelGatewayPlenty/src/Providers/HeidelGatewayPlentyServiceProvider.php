@@ -11,6 +11,7 @@ use Plenty\Modules\Payment\Events\Checkout\GetPaymentMethodContent;
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodContainer;
 use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\ServiceProvider;
+use Plenty\Modules\Account\Address\Contracts;
 
 use Plenty\Plugin\ConfigRepository;
 
@@ -39,11 +40,13 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 	 * @param Dispatcher $eventDispatcher
 	 */
 	public function boot(
-			HeidelGatewayPlentyHelper $paymentHelper,
-			PaymentMethodContainer $payContainer,
-			Dispatcher $eventDispatcher,
-			BasketRepositoryContract $warenkorb,
-			ConfigRepository $configRepository
+			HeidelGatewayPlentyHelper 	$paymentHelper,
+			PaymentMethodContainer 		$payContainer,
+			Dispatcher 					$eventDispatcher,
+			BasketRepositoryContract 	$warenkorb,
+			ConfigRepository 			$configRepository,
+			AddressRepositoryContract 	$adressRepoContract
+			
 			)
 	{
 		// Create the ID of the payment method if it doesn't exist yet
@@ -62,7 +65,6 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 				{
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
-
 						$event->setValue('<h1>Heidelpay ExecutePayment<h1>');
 						$event->setType('htmlContent');
 					}
@@ -71,18 +73,24 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
 		// Listen for the event that gets the payment method content
 		$eventDispatcher->listen(GetPaymentMethodContent::class,
-				function(GetPaymentMethodContent $event) use( $paymentHelper, $warenkorb, $configRepository)
+				function(GetPaymentMethodContent $event) 
+				use( 
+						$paymentHelper, 
+						$warenkorb, 
+						$configRepository,
+						$adressRepoContract
+						)
 				{
 					if($event->getMop() == $paymentHelper->getPaymentMethod())
 					{
 						$warenkorb = $warenkorb->load();
 						
 						$paramsToSend = array();
-						//$paramsToSend['SECURITY.SENDER'] 	= $configRepository->get('HeidelGatewayPlenty.securitySender');
-// 						$paramsToSend['USER.LOGIN']			= $configRepository->get('HeidelGatewayPlenty.login');
-// 						$paramsToSend['USER.PWD']			= $configRepository->get('HeidelGatewayPlenty.password');
+						$paramsToSend['SECURITY.SENDER'] 	= $configRepository->get('HeidelGatewayPlenty.securitySender');
+ 						$paramsToSend['USER.LOGIN']			= $configRepository->get('HeidelGatewayPlenty.login');
+ 						$paramsToSend['USER.PWD']			= $configRepository->get('HeidelGatewayPlenty.password');
 																
-						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>' /*.$paramsToSend['USER.PWD']*/.' hier USR.Pass');
+						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>' .$paramsToSend['USER.PWD'].' hier USR.Pass');
 						$event->setType('htmlContent');
 					}
 		});
