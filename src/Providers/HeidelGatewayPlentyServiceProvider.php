@@ -28,7 +28,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
 	public function register()
 	{
-
+		
 	}
 
 	/**

@@ -7,8 +7,7 @@
    	"type"              : "payment",
 	"require"           : [],
     "namespace"         : "HeidelGatewayPlenty",
-    "serviceProvider"  	: [	"HeidelGatewayPlenty\\Providers\\HeidelGatewayPlentyServiceProvider"
-    						], 
+    "serviceProvider"  	: "HeidelGatewayPlenty\\Providers\\HeidelGatewayPlentyServiceProvider", 
     "dependencies"  	: {
     						"heidelpay/php-api" : "17.5.2"
     						}, 
