@@ -25,7 +25,6 @@ use \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod;
  */
 class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 {
-
     public function register()
     {
 
@@ -43,7 +42,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         PaymentMethodContainer $payContainer,
         Dispatcher $eventDispatcher,
         BasketRepositoryContract $warenkorb,
-        ConfigRepository $configRepository
+        ConfigRepository $configRepository,
+        CreditCardPaymentMethod $cardPaymentMethod
     )
     {
         // Create the ID of the payment method if it doesn't exist yet
@@ -69,7 +69,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
         // Listen for the event that gets the payment method content
         $eventDispatcher->listen(GetPaymentMethodContent::class,
-            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository) {
+            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $cardPaymentMethod) {
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
 
@@ -83,12 +83,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                         $paramsToSend[4] = false;
                     }
 
-                    $creditCard = new \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod();
+                    $cardPaymentMethod->getRequest()->authentification($paramsToSend);
 
-
-                    $creditCard->getRequest()->authentification($paramsToSend);
-
-                    $creditCard->getRequest()->customerAddress(
+                    $cardPaymentMethod->getRequest()->customerAddress(
                         'John',
                         'Doe',
                         null,
@@ -100,27 +97,27 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                         'Deutschland',
                         'sascha.pflueger@heidelpay.de'
                     );
-                    $creditCard->getRequest()->basketData(
+                    $cardPaymentMethod->getRequest()->basketData(
                         '1234',
                         '15.30',
                         'EUR',
                         $configRepository->get('HeidelGatewayPlenty.secret')
                     );
 
-                    $creditCard->getRequest()->async(
+                    $cardPaymentMethod->getRequest()->async(
                         'DE',
                         'https://heidelpay-dev.plentymarkets-cloud01.com'
                     );
 
-					$creditCard->authorize(
+					$cardPaymentMethod->authorize(
 					    'https://heidelpay-dev.plentymarkets-cloud01.com',
                         'TRUE',
                         null
                     );
 
-					if($creditCard->getResponse()->isSuccess())
+					if($cardPaymentMethod->getResponse()->isSuccess())
 					{
-					    $paymentformUrl = $creditCard->getResponse()->getPaymentFormUrl();
+					    $paymentformUrl = $cardPaymentMethod->getResponse()->getPaymentFormUrl();
                     }
 						$event->setValue($paymentformUrl.'<br><h1>Heidelpay GetPaymentMethodContent<h1>' . $paramsToSend['USER.PWD'] . ' hier USR.Pass');
 						$event->setType('htmlContent');
