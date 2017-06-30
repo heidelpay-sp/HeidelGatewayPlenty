@@ -82,7 +82,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 						$paramsToSend['USER.LOGIN']			= $configRepository->get('HeidelGatewayPlenty.login');
 						$paramsToSend['USER.PWD']			= $configRepository->get('HeidelGatewayPlenty.password');
 						$paramsToSend['CHAN']				= $configRepository->get('HeidelGatewayPlenty.hgw_cc_channel');
-						
+
+						$hgw = new \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod();
 																
 						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>'.$paramsToSend['USER.PWD'].' hier USR.Pass');
 						$event->setType('htmlContent');
