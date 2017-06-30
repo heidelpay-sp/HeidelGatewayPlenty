@@ -78,9 +78,11 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 						$warenkorb = $warenkorb->load();
 						
 						$paramsToSend = array();
-						//$paramsToSend['SECURITY.SENDER'] 	= $configRepository->get('HeidelGatewayPlenty.securitySender');
-// 						$paramsToSend['USER.LOGIN']			= $configRepository->get('HeidelGatewayPlenty.login');
+						$paramsToSend['SECURITY.SENDER'] 	= $configRepository->get('HeidelGatewayPlenty.securitySender');
+						$paramsToSend['USER.LOGIN']			= $configRepository->get('HeidelGatewayPlenty.login');
 						$paramsToSend['USER.PWD']			= $configRepository->get('HeidelGatewayPlenty.password');
+						$paramsToSend['CHAN']				= $configRepository->get('HeidelGatewayPlenty.hgw_cc_channel');
+						
 																
 						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>'.$paramsToSend['USER.PWD'].' hier USR.Pass');
 						$event->setType('htmlContent');
