@@ -17,7 +17,7 @@ use Plenty\Plugin\ConfigRepository;
 use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
 use HeidelGatewayPlenty\Methods\HgwCreditcardPaymentMethod;
 
-use \Heidelpay\PhpApi\PaymentMethodes\CreditCardPaymentMethod;
+use \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod;
 
 /**
  * Class PayUponPickupServiceProvider
@@ -26,78 +26,107 @@ use \Heidelpay\PhpApi\PaymentMethodes\CreditCardPaymentMethod;
 class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 {
 
-	public function register()
-	{
-		
-	}
+    public function register()
+    {
 
-	/**
-	 * Boot additional services for the payment method
-	 *
-	 * @param HeidelGatewayPlentyHelper $paymentHelper
-	 * @param PaymentMethodContainer $payContainer
-	 * @param Dispatcher $eventDispatcher
-	 */
-	public function boot(
-			HeidelGatewayPlentyHelper $paymentHelper,
-			PaymentMethodContainer $payContainer,
-			Dispatcher $eventDispatcher,
-			BasketRepositoryContract $warenkorb,
-			ConfigRepository $configRepository
-			)
-	{
-		// Create the ID of the payment method if it doesn't exist yet
-		$paymentHelper->createMopIfNotExists();
+    }
 
-		/**
-		 * @todo hier alle Paymethoden Registrieren
-		 */
+    /**
+     * Boot additional services for the payment method
+     *
+     * @param HeidelGatewayPlentyHelper $paymentHelper
+     * @param PaymentMethodContainer $payContainer
+     * @param Dispatcher $eventDispatcher
+     */
+    public function boot(
+        HeidelGatewayPlentyHelper $paymentHelper,
+        PaymentMethodContainer $payContainer,
+        Dispatcher $eventDispatcher,
+        BasketRepositoryContract $warenkorb,
+        ConfigRepository $configRepository
+    )
+    {
+        // Create the ID of the payment method if it doesn't exist yet
+        $paymentHelper->createMopIfNotExists();
 
-		// Register Creditcard payment method in the payment method container
-		$payContainer->register('HeidelGatewayPlenty::HGWCREDITCARD', HgwCreditcardPaymentMethod::class, [ AfterBasketChanged::class, AfterBasketItemAdd::class, AfterBasketCreate::class ]);
+        /**
+         * @todo hier alle Paymethoden Registrieren
+         */
 
-		// Listen for the event that executes the payment
-		$eventDispatcher->listen(ExecutePayment::class,
-				function(ExecutePayment $event) use( $paymentHelper)
-				{
-					if($event->getMop() == $paymentHelper->getPaymentMethod())
+        // Register Creditcard payment method in the payment method container
+        $payContainer->register('HeidelGatewayPlenty::HGWCREDITCARD', HgwCreditcardPaymentMethod::class, [AfterBasketChanged::class, AfterBasketItemAdd::class, AfterBasketCreate::class]);
+
+        // Listen for the event that executes the payment
+        $eventDispatcher->listen(ExecutePayment::class,
+            function (ExecutePayment $event) use ($paymentHelper) {
+                if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
+
+                    $event->setValue('<h1>Heidelpay ExecutePayment<h1>');
+                    $event->setType('htmlContent');
+                }
+            });
+
+
+        // Listen for the event that gets the payment method content
+        $eventDispatcher->listen(GetPaymentMethodContent::class,
+            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository) {
+                if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
+                    $warenkorb = $warenkorb->load();
+
+                    $paramsToSend = array();
+                    $paramsToSend[0] = $configRepository->get('HeidelGatewayPlenty.securitySender');
+                    $paramsToSend[1] = $configRepository->get('HeidelGatewayPlenty.login');
+                    $paramsToSend[2] = $configRepository->get('HeidelGatewayPlenty.password');
+                    $paramsToSend[3] = $configRepository->get('HeidelGatewayPlenty.hgw_cc_channel');
+                    $paramsToSend[4] = true;
+                    if ($configRepository->get('HeidelGatewayPlenty.transactionmode')) {
+                        $paramsToSend[4] = false;
+                    }
+
+                    $creditCard = new \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod();
+
+
+                    $creditCard->getRequest()->authentification($paramsToSend);
+
+                    $creditCard->getRequest()->customerAddress(
+                        'John',
+                        'Doe',
+                        null,
+                        '12345',
+                        'Vangerowstr. 5',
+                        null,
+                        '69115',
+                        'Heidelberg',
+                        'Deutschland',
+                        'sascha.pflueger@heidelpay.de'
+                    );
+                    $creditCard->getRequest()->basketData(
+                        '1234',
+                        '15.30',
+                        'EUR',
+                        $configRepository->get('HeidelGatewayPlenty.secret')
+                    );
+
+                    $creditCard->getRequest()->async(
+                        'DE',
+                        'https://heidelpay-dev.plentymarkets-cloud01.com'
+                    );
+
+					$creditCard->authorize(
+					    'https://heidelpay-dev.plentymarkets-cloud01.com',
+                        'TRUE',
+                        null
+                    );
+
+					if($creditCard->getResponse()->isSuccess())
 					{
-
-						$event->setValue('<h1>Heidelpay ExecutePayment<h1>');
+					    $paymentformUrl = $creditCard->getResponse()->getPaymentFormUrl();
+                    }
+						$event->setValue($paymentformUrl.'<br><h1>Heidelpay GetPaymentMethodContent<h1>' . $paramsToSend['USER.PWD'] . ' hier USR.Pass');
 						$event->setType('htmlContent');
 					}
-		});
+            });
 
 
-		// Listen for the event that gets the payment method content
-		$eventDispatcher->listen(GetPaymentMethodContent::class,
-				function(GetPaymentMethodContent $event) use( $paymentHelper, $warenkorb, $configRepository)
-				{
-					if($event->getMop() == $paymentHelper->getPaymentMethod())
-					{
-						$warenkorb = $warenkorb->load();
-						
-						$paramsToSend = array();
-						$paramsToSend[0] 	= $configRepository->get('HeidelGatewayPlenty.securitySender');
-						$paramsToSend[1]	= $configRepository->get('HeidelGatewayPlenty.login');
-						$paramsToSend[2]	= $configRepository->get('HeidelGatewayPlenty.password');
-                        $paramsToSend[3]	= $configRepository->get('HeidelGatewayPlenty.hgw_cc_channel');
-                        $paramsToSend[4]    = true;
-                        if ($configRepository->get('HeidelGatewayPlenty.transactionmode'))
-                        {
-                            $paramsToSend[4] = false;
-                        }
-
-                        $creditCard = new \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod();
-                        $creditCard->getRequest()->authentification($paramsToSend);
-						
-                        $creditCard->getRequest()->
-																
-						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1>'.$paramsToSend['USER.PWD'].' hier USR.Pass');
-						$event->setType('htmlContent');
-					}
-		});
-
-
-	}
+    }
 }
