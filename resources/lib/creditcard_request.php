@@ -49,7 +49,7 @@ use Plenty\Plugin\ConfigRepository;
 
         if($cardPaymentMethod->getResponse()->isSuccess())
         {
-            return $cardPaymentMethod->getResponse()->getPaymentFormUrl();
+            return json_decode($cardPaymentMethod,true);
         }
 
 
