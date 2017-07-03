@@ -1,11 +1,6 @@
 <?php
-namespace Heidelpay\Plenty\Php_Api;
 use Plenty\Plugin\ConfigRepository;
 
-
-class CreditCardClass {
-    public function creditCardApiRequest()
-    {
         $configRepository = new ConfigRepository;
 
 
@@ -56,5 +51,5 @@ class CreditCardClass {
         {
             return $cardPaymentMethod->getResponse()->getPaymentFormUrl();
         }
-    }
-}
+
+

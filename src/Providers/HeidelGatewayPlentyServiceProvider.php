@@ -11,6 +11,7 @@ use Plenty\Modules\Payment\Events\Checkout\GetPaymentMethodContent;
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodContainer;
 use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\ServiceProvider;
+use Plenty\Modules\Plugin\Libs\Contracts\LibraryCallContract;
 
 use Plenty\Plugin\ConfigRepository;
 
@@ -42,8 +43,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         PaymentMethodContainer $payContainer,
         Dispatcher $eventDispatcher,
         BasketRepositoryContract $warenkorb,
-        ConfigRepository $configRepository
+        ConfigRepository $configRepository,
  //     ,  CreditCardPaymentMethod $cardPaymentMethod
+        LibraryCallContract $libCall
     )
     {
         // Create the ID of the payment method if it doesn't exist yet
@@ -69,11 +71,13 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
         // Listen for the event that gets the payment method content
         $eventDispatcher->listen(GetPaymentMethodContent::class,
-            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $cardPaymentMethod) {
+            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository $libCall) {
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
 
-						$event->setValue('<br><h1>Heidelpay GetPaymentMethodContent<h1>'/* . $paramsToSend['USER.PWD'] . ' hier USR.Pass'*/);
+                    $creditcardRequest = $libCall->call("HeidelGatewayPlenty::creditcard_request");
+
+						$event->setValue('<br><h1>Heidelpay GetPaymentMethodContent<h1>'.$creditcardRequest/* . $paramsToSend['USER.PWD'] . ' hier USR.Pass'*/);
 						$event->setType('htmlContent');
 					}
             });

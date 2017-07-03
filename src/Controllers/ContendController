@@ -23,7 +23,7 @@ class ContentController extends Controller
     {
         $packagistResult =
             $libraryCall->call(
-                'HeidelGatewayPlenty::CreditCardClass',
+                'HeidelGatewayPlenty::creditcardrequest',
                 ['packagist_query' => $request->get('')]
             );
     }
