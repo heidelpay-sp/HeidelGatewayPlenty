@@ -46,10 +46,10 @@ use Plenty\Plugin\ConfigRepository;
             'TRUE',
             null
         );
-return json_encode($cardPaymentMethod);
+return $cardPaymentMethod->getResponse()->getPresentation()->getAmount();
         if($cardPaymentMethod->getResponse()->isSuccess())
         {
-           return json_encode($cardPaymentMethod);
+           return $cardPaymentMethod->getRequest()->getPresentation()->getAmount();
 
         } else {
             return "schade";
