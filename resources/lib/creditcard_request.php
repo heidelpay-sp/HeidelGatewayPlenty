@@ -47,11 +47,11 @@ use Plenty\Plugin\ConfigRepository;
             null
         );
 return $cardPaymentMethod->getResponse()->getPresentation()->getAmount();
-        if($cardPaymentMethod->getResponse()->isSuccess())
+       /* if($cardPaymentMethod->getResponse()->isSuccess())
         {
            return $cardPaymentMethod->getRequest()->getPresentation()->getAmount();
 
         } else {
             return "schade";
         }
-
+*/
