@@ -42,8 +42,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         PaymentMethodContainer $payContainer,
         Dispatcher $eventDispatcher,
         BasketRepositoryContract $warenkorb,
-        ConfigRepository $configRepository,
-        CreditCardPaymentMethod $cardPaymentMethod
+        ConfigRepository $configRepository
+ //     ,  CreditCardPaymentMethod $cardPaymentMethod
     )
     {
         // Create the ID of the payment method if it doesn't exist yet
@@ -73,7 +73,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
 
-						$event->setValue('<br><h1>Heidelpay GetPaymentMethodContent<h1>' . $paramsToSend['USER.PWD'] . ' hier USR.Pass');
+						$event->setValue('<br><h1>Heidelpay GetPaymentMethodContent<h1>'/* . $paramsToSend['USER.PWD'] . ' hier USR.Pass'*/);
 						$event->setType('htmlContent');
 					}
             });

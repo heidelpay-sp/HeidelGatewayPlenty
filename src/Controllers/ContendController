@@ -1,0 +1,30 @@
+<?php
+namespace HeidelGatewayPlenty\Controllers;
+
+use Plenty\Plugin\Controller;
+use Plenty\Modules\Plugin\Libs\Contracts\LibraryCallContract;
+use Plenty\Plugin\Http\Request;
+
+use \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod;
+
+class ContentController extends Controller
+{
+    /**
+     * @param LibraryCallContract $libraryCall
+     * @param Request $request
+     * @param CreditCardPaymentMethod $cardPaymentMethod
+     */
+    public function getIframe
+    (
+        LibraryCallContract $libraryCall,
+        Request $request,
+        CreditCardPaymentMethod $cardPaymentMethod
+    )
+    {
+        $packagistResult =
+            $libraryCall->call(
+                'HeidelGatewayPlenty::CreditCardClass',
+                ['packagist_query' => $request->get('')]
+            );
+    }
+}

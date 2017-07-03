@@ -1,9 +1,14 @@
 <?php
 namespace Heidelpay\Plenty\Php_Api;
+use Plenty\Plugin\ConfigRepository;
+
 
 class CreditCardClass {
     public function creditCardApiRequest()
     {
+        $configRepository = new ConfigRepository;
+
+
         $cardPaymentMethod = new \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod();
         $paramsToSend = array();
         $paramsToSend[0] = $configRepository->get('HeidelGatewayPlenty.securitySender');
