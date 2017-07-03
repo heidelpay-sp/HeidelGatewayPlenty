@@ -48,9 +48,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         Dispatcher $eventDispatcher,
         BasketRepositoryContract $warenkorb,
         ConfigRepository $configRepository,
-        LibraryCallContract $libCall,
+        LibraryCallContract $libCall
 
-        AddressRepositoryContract $addressRepo
+       //, AddressRepositoryContract $addressRepo
     )
     {
         // Create the ID of the payment method if it doesn't exist yet
@@ -88,15 +88,15 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                     $creditcardRequest = $libCall->call("HeidelGatewayPlenty::crditcard_request");
 
                     /* ************************************************************************************ */
-                    $shippingAddressId = $warenkorb->customerShippingAddressId;
+                   /* $shippingAddressId = $warenkorb->customerShippingAddressId;
                     if($shippingAddressId == -99)
                     {
                         $shippingAddressId = $warenkorb->customerInvoiceAddressId;
                     }
                     $adresse = $addressRepo->findAddressById($shippingAddressId);
+                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$adresse->firstName);*/
                     /* ************************************************************************************ */
-                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$adresse->firstName);
-						//$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($creditcardRequest));
+						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($creditcardRequest));
 						$event->setType('htmlContent');
 					}
             });
