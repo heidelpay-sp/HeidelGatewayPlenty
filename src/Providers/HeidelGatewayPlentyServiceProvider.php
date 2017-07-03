@@ -85,7 +85,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                     $warenkorb = $warenkorb->load();
 
 
-                    $creditcardRequest = $libCall->call("HeidelGatewayPlenty::crditcard_request");
+                    $creditcardRequest = $libCall->call("HeidelGatewayPlenty::creditcard_request");
 
                     /* ************************************************************************************ */
                    /* $shippingAddressId = $warenkorb->customerShippingAddressId;
