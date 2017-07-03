@@ -17,7 +17,11 @@ use Plenty\Plugin\ConfigRepository;
 
 use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
 use HeidelGatewayPlenty\Methods\HgwCreditcardPaymentMethod;
-
+/* ************************************************************************************ */
+use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
+use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
+use Plenty\Modules\Account\Contact\Models\Contact;
+/* ************************************************************************************ */
 use \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod;
 
 /**
@@ -44,8 +48,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         Dispatcher $eventDispatcher,
         BasketRepositoryContract $warenkorb,
         ConfigRepository $configRepository,
- //     ,  CreditCardPaymentMethod $cardPaymentMethod
-        LibraryCallContract $libCall
+        LibraryCallContract $libCall,
+
+        AddressRepositoryContract $addressRepo
     )
     {
         // Create the ID of the payment method if it doesn't exist yet
@@ -56,7 +61,11 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
          */
 
         // Register Creditcard payment method in the payment method container
-        $payContainer->register('HeidelGatewayPlenty::HGWCREDITCARD', HgwCreditcardPaymentMethod::class, [AfterBasketChanged::class, AfterBasketItemAdd::class, AfterBasketCreate::class]);
+        $payContainer->register(
+            'HeidelGatewayPlenty::HGWCREDITCARD',
+            HgwCreditcardPaymentMethod::class,
+            [AfterBasketChanged::class, AfterBasketItemAdd::class, AfterBasketCreate::class]
+        );
 
         // Listen for the event that executes the payment
         $eventDispatcher->listen(ExecutePayment::class,
@@ -71,13 +80,23 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
         // Listen for the event that gets the payment method content
         $eventDispatcher->listen(GetPaymentMethodContent::class,
-            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall) {
+            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall, $addressRepo) {
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
 
-                    $prePaymentRequest = $libCall->call("HeidelGatewayPlenty::prepayment_request");
 
-						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($prePaymentRequest));
+                    $creditcardRequest = $libCall->call("HeidelGatewayPlenty::crditcard_request");
+
+                    /* ************************************************************************************ */
+                    $shippingAddressId = $warenkorb->customerShippingAddressId;
+                    if($shippingAddressId == -99)
+                    {
+                        $shippingAddressId = $warenkorb->customerInvoiceAddressId;
+                    }
+                    $adresse = $addressRepo->findAddressById($shippingAddressId);
+                    /* ************************************************************************************ */
+                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$adresse->firstName);
+						//$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($creditcardRequest));
 						$event->setType('htmlContent');
 					}
             });
