@@ -1,6 +1,6 @@
 <?php
 use Plenty\Plugin\ConfigRepository;
-return "Juhu";
+
         $configRepository = new ConfigRepository;
 
 
@@ -46,10 +46,12 @@ return "Juhu";
             'TRUE',
             null
         );
-
+return json_encode($cardPaymentMethod);
         if($cardPaymentMethod->getResponse()->isSuccess())
         {
-           // return json_decode($cardPaymentMethod,true);
+           return json_encode($cardPaymentMethod);
 
+        } else {
+            return "schade";
         }
 
