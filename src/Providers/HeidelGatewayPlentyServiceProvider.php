@@ -75,9 +75,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
 
-                    $creditcardRequest = $libCall->call("HeidelGatewayPlenty::creditcard_request");
+                    $prePaymentRequest = $libCall->call("HeidelGatewayPlenty::prepayment_request");
 
-						$event->setValue('<br><h1>Heidelpay GetPaymentMethodContent<h1>'.json_encode($creditcardRequest)/* . $paramsToSend['USER.PWD'] . ' hier USR.Pass'*/);
+						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($prePaymentRequest));
 						$event->setType('htmlContent');
 					}
             });
