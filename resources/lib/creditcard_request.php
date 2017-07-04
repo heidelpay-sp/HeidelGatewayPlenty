@@ -1,8 +1,10 @@
 <?php
 use Plenty\Plugin\ConfigRepository;
+
 try {
 
-    $configRepository = new ConfigRepository;
+    //$configRepository = new ConfigRepository;
+    $configRepository = new Plenty\Plugin\ConfigRepository;
     return 'hallo';
     // Filling Request-Object with Data
     $creditCardMethod = new \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod();
