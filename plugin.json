@@ -9,7 +9,7 @@
     "namespace"         : "HeidelGatewayPlenty",
     "serviceProvider"  	: "HeidelGatewayPlenty\\Providers\\HeidelGatewayPlentyServiceProvider", 
     "dependencies"  	: {
-    						"heidelpay/php-api" : "dev.heidelpay"
+    						"heidelpay/php-api" : "dev-easycredit"
     						}, 
     "runOnBuild"		: "HeidelGatewayPlenty\\Migrations\\CreatePaymentMethod"
 }
