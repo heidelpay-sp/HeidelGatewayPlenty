@@ -95,7 +95,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                     /* ************************************************************************************ */
                         $creditcardRequest = $libCall->call("HeidelGatewayPlenty::creditcard_request");
 
-                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($creditcardRequest));
+                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'./*json_encode(*/$creditcardRequest/*)*/);
 						$event->setType('htmlContent');
 					}
             });

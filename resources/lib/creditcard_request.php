@@ -59,5 +59,5 @@ try {
      }
 */
 } catch (Exception $e){
-    return $e." boom";
+    return " boom ".$e;
 }
