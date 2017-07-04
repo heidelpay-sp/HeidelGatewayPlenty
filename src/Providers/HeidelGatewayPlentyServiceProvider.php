@@ -106,7 +106,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                             1 => "Alfa",                                                    //"nameFamily",
                             2 => null,                                                      //"nameCompany",
                             3 => "147",                                                     //"shopperId",
-                            3 => "Vangerowstr 18",                                          //"addressStreet",
+                            3 => "Vangerowstr. 18",                                          //"addressStreet",
                             4 => null,                                                      //"addressState",
                             5 => "69115",                                                   //"addressZip",
                             6 => "Heidelberg",                                              //"addressCity",
