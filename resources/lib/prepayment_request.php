@@ -39,7 +39,8 @@ try {
         $params[0],
         $params[1]
     );
-    $creditCardMethod->getRequest()->set('enabled','FALSE');
+    $creditCardMethod->getRequest()->getFrontend()->set('enabled','FALSE');
+
     $creditCardMethod->authorize(
 //        $params["authorize"][0],
 //        $params["authorize"][1],
