@@ -104,31 +104,31 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                                     4 => true
                                 ],
                                 "customerAddress" => [
-                                    0 => "nameGiven",
-                                    1 => "nameFamily",
-                                    2 => "nameCompany",
-                                    3 => "shopperId",
-                                    3 => "addressStreet",
-                                    4 => "addressState",
-                                    5 => "addressZip",
-                                    6 => "addressCity",
-                                    7 => "addressCountry",
-                                    8 => "contactMail"
+                                    0 => "Albert",                                                  //"nameGiven",
+                                    1 => "Alfa",                                                    //"nameFamily",
+                                    2 => null,                                                      //"nameCompany",
+                                    3 => "147",                                                     //"shopperId",
+                                    3 => "Vangerowstr 18",                                          //"addressStreet",
+                                    4 => null,                                                      //"addressState",
+                                    5 => "69115",                                                   //"addressZip",
+                                    6 => "Heidelberg",                                              //"addressCity",
+                                    7 => null,                                                      //"addressCountry",
+                                    8 => "sascha.pflueger@heidelpay.de",                            //"contactMail"
                                 ],
                                 "basketData" => [
-                                    0 => "ShopIdentifier",
-                                    1 => "amount",
-                                    2 => "currency",
-                                    3 => "secret"
+                                    0 => "1",                                                       //"ShopIdentifier",
+                                    1 => "15.60",                                                   //"amount",
+                                    2 => "EUR",                                                     //"currency",
+                                    3 => $configRepository->get("HeidelGatewayPlenty.secret"),      //"secret"
                                 ],
                                 "async" => [
-                                    0 => "languageCode",
-                                    1 => "responseUrl"
+                                    0 => "DE",                                                      //"languageCode",
+                                    1 => "https://heidelpay-dev.plentymarkets-cloud01.com/"         //"responseUrl"
                                 ],
                                 "authorize" => [
-                                    0 => "paymentFrameOrigin",
-                                    1 => "preventAsyncRedirect",
-                                    2 => "cssPath"
+                                    0 => "https://heidelpay-dev.plentymarkets-cloud01.com/",        //"paymentFrameOrigin",
+                                    1 => true,                                                      //"preventAsyncRedirect",
+                                    2 => null,                                                      //"cssPath"
                                 ]
                             )
 
