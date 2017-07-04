@@ -7,37 +7,37 @@ try {
 
     $params = SdkRestApi::getParam("authentification");
     $creditCardMethod->getRequest()->authentification(
-        $params["authentification"][0],
-        $params["authentification"][1],
-        $params["authentification"][2],
-        $params["authentification"][3]
+        $params[0],
+        $params[1],
+        $params[2],
+        $params[3]
     );
 
     $params = SdkRestApi::getParam("customerAddress");
     $creditCardMethod->getRequest()->customerAddress(
-        $params["customerAddress"][0],
-        $params["customerAddress"][1],
-        $params["customerAddress"][2],
-        $params["customerAddress"][3],
-        $params["customerAddress"][4],
-        $params["customerAddress"][5],
-        $params["customerAddress"][6],
-        $params["customerAddress"][7],
-        $params["customerAddress"][8]
+        $params[0],
+        $params[1],
+        $params[2],
+        $params[3],
+        $params[4],
+        $params[5],
+        $params[6],
+        $params[7],
+        $params[8]
     );
 
     $params = SdkRestApi::getParam("basketData");
     $creditCardMethod->getRequest()->basketData(
-        $params["basketData"][0],
-        $params["basketData"][1],
-        $params["basketData"][2],
-        $params["basketData"][3]
+        $params[0],
+        $params[1],
+        $params[2],
+        $params[3]
     );
 
     $params = SdkRestApi::getParam("async");
     $creditCardMethod->getRequest()->async(
-        $params["async"][0],
-        $params["async"][1]
+        $params[0],
+        $params[1]
     );
     $creditCardMethod->authorize(
 //        $params["authorize"][0],
