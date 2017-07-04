@@ -1,9 +1,9 @@
 <?php
 use Plenty\Plugin\ConfigRepository;
 try {
-    return 'hallo';
-    $configRepository = new ConfigRepository;
 
+    $configRepository = new ConfigRepository;
+    return 'hallo';
     // Filling Request-Object with Data
     $creditCardMethod = new \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod();
     $paramsToSend = array();
