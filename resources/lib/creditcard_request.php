@@ -18,7 +18,7 @@ try {
    // if ($configRepository->get('HeidelGatewayPlenty.transactionmode')) {
         $paramsToSend[4] = false;
     //}
-    return 'hallo';
+
     $creditCardMethod->getRequest()->authentification($paramsToSend);
 
     $creditCardMethod->getRequest()->customerAddress(
@@ -33,7 +33,7 @@ try {
         'Deutschland',
         'sascha.pflueger@heidelpay.de'
     );
-
+    return 'hallo';
     $creditCardMethod->getRequest()->basketData(
         '1234',
         '15.30',
