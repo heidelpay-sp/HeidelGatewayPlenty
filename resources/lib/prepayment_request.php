@@ -49,7 +49,7 @@ try {
     );
 
 
-    return $creditCardMethod->getResponse()->getPresentation()->getAmount();
+    return json_encode($creditCardMethod->getResponse()->getError());
 //    return $params["authentification"][0].' '.$params["authentification"][1].' '.$params["authentification"][2].' '.$params["authentification"][3];
 
 } catch (Exception $e){
