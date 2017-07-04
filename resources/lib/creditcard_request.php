@@ -38,7 +38,7 @@ try {
         $configRepository->get('HeidelGatewayPlenty.secret')
     );
 
-    $creditCardMethod->getRequest()->async(
+ return   $creditCardMethod->getRequest()->async(
         'DE',
         'https://heidelpay-dev.plentymarkets-cloud01.com'
     );
