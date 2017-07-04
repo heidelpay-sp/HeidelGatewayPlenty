@@ -1,6 +1,7 @@
 <?php
 use Plenty\Plugin\ConfigRepository;
 try {
+    return 'hallo';
     $configRepository = new ConfigRepository;
 
     // Filling Request-Object with Data
@@ -38,7 +39,7 @@ try {
         $configRepository->get('HeidelGatewayPlenty.secret')
     );
 
- return   $creditCardMethod->getRequest()->async(
+    $creditCardMethod->getRequest()->async(
         'DE',
         'https://heidelpay-dev.plentymarkets-cloud01.com'
     );
