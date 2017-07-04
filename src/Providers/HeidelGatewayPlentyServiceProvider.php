@@ -126,9 +126,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                                     1 => "https://heidelpay-dev.plentymarkets-cloud01.com/"         //"responseUrl"
                                 ],
                                 "authorize" => [
-                                    0 => "https://heidelpay-dev.plentymarkets-cloud01.com/",        //"paymentFrameOrigin",
-                                    1 => "TRUE",                                                      //"preventAsyncRedirect",
-                                    2 => null,                                                      //"cssPath"
+//                                    0 => "https://heidelpay-dev.plentymarkets-cloud01.com/",        //"paymentFrameOrigin",
+//                                    1 => "TRUE",                                                      //"preventAsyncRedirect",
+//                                    2 => null,                                                      //"cssPath"
                                 ]
                             )
 

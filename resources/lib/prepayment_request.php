@@ -2,7 +2,7 @@
 $params = SdkRestApi::getParam("params");
 $params = json_decode($params,true);
 try {
-    $creditCardMethod = new \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod();
+    $creditCardMethod = new \Heidelpay\PhpApi\PaymentMethods\PrepaymentPaymentMethod();
 
     $creditCardMethod->getRequest()->authentification(
         $params["authentification"][0],
@@ -34,9 +34,9 @@ try {
         $params["async"][1]
     );
     $creditCardMethod->authorize(
-        $params["authorize"][0],
-        $params["authorize"][1],
-        $params["authorize"][2]
+//        $params["authorize"][0],
+//        $params["authorize"][1],
+//        $params["authorize"][2]
     );
 
     return $creditCardMethod->getResponse()->getPresentation()->getAmount();
