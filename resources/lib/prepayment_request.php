@@ -1,5 +1,6 @@
 <?php
 $params = SdkRestApi::getParam("params");
+return $params;
 //$params = json_decode($params,true);
 try {
     $creditCardMethod = new \Heidelpay\PhpApi\PaymentMethods\PrepaymentPaymentMethod();
