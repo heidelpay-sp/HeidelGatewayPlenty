@@ -20,6 +20,8 @@ try {
 //        $paramsToSend[4] = false;
 //    //}
     $params = SdkRestApi::getParam("params");
+
+    $creditCardMethod = new \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod();
     $creditCardMethod->getRequest()->authentification($params["authentification"]);
 
     $creditCardMethod->getRequest()->customerAddress($params["customerAddress"]);

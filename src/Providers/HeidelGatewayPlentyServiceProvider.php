@@ -107,7 +107,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                                     0 => "nameGiven",
                                     1 => "nameFamily",
                                     2 => "nameCompany",
-                                    3 => "shopperId:",
+                                    3 => "shopperId",
                                     3 => "addressStreet",
                                     4 => "addressState",
                                     5 => "addressZip",
