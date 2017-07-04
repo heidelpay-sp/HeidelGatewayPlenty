@@ -44,6 +44,7 @@ try {
 //        $params["authorize"][1],
 //        $params["authorize"][2]
     );
+    $creditCardMethod->getRequest()->set('enabled','FALSE');
 
     return $creditCardMethod->getResponse()->getPresentation()->getAmount();
 //    return $params["authentification"][0].' '.$params["authentification"][1].' '.$params["authentification"][2].' '.$params["authentification"][3];
