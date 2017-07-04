@@ -33,7 +33,7 @@ try {
         'Deutschland',
         'sascha.pflueger@heidelpay.de'
     );
-    return 'hallo';
+
     $creditCardMethod->getRequest()->basketData(
         '1234',
         '15.30',
@@ -51,7 +51,7 @@ try {
         'TRUE',
         null
     );
-
+    return 'hallo1';
     return $creditCardMethod->getResponse()->getPresentation()->getAmount();
     /* if($cardPaymentMethod->getResponse()->isSuccess())
      {
