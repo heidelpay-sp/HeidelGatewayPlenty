@@ -1,10 +1,11 @@
 <?php
-$params = SdkRestApi::getParam("authentification");
-return $params;
+
+
 //$params = json_decode($params,true);
 try {
     $creditCardMethod = new \Heidelpay\PhpApi\PaymentMethods\PrepaymentPaymentMethod();
 
+    $params = SdkRestApi::getParam("authentification");
     $creditCardMethod->getRequest()->authentification(
         $params["authentification"][0],
         $params["authentification"][1],
@@ -12,6 +13,7 @@ try {
         $params["authentification"][3]
     );
 
+    $params = SdkRestApi::getParam("customerAddress");
     $creditCardMethod->getRequest()->customerAddress(
         $params["customerAddress"][0],
         $params["customerAddress"][1],
@@ -24,12 +26,15 @@ try {
         $params["customerAddress"][8]
     );
 
+    $params = SdkRestApi::getParam("basketData");
     $creditCardMethod->getRequest()->basketData(
         $params["basketData"][0],
         $params["basketData"][1],
         $params["basketData"][2],
         $params["basketData"][3]
     );
+
+    $params = SdkRestApi::getParam("async");
     $creditCardMethod->getRequest()->async(
         $params["async"][0],
         $params["async"][1]
