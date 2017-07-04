@@ -45,8 +45,8 @@ try {
 //        $params["authorize"][2]
     );
 
-//    return $creditCardMethod->getResponse()->getPresentation()->getAmount();
-    return $params["authentification"][0].' '.$params["authentification"][1].' '.$params["authentification"][2].' '.$params["authentification"][3];
+    return $creditCardMethod->getResponse()->getPresentation()->getAmount();
+//    return $params["authentification"][0].' '.$params["authentification"][1].' '.$params["authentification"][2].' '.$params["authentification"][3];
 
 } catch (Exception $e){
     return " boom ".$e->getMessage();
