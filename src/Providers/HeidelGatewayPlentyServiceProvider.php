@@ -112,11 +112,11 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                                     4 => null,                                                      //"addressState",
                                     5 => "69115",                                                   //"addressZip",
                                     6 => "Heidelberg",                                              //"addressCity",
-                                    7 => null,                                                      //"addressCountry",
+                                    7 => "Deutschland",                                             //"addressCountry",
                                     8 => "sascha.pflueger@heidelpay.de",                            //"contactMail"
                                 ],
                                 "basketData" => [
-                                    0 => "1",                                                       //"ShopIdentifier",
+                                    0 => "12345",                                                   //"ShopIdentifier",
                                     1 => "15.60",                                                   //"amount",
                                     2 => "EUR",                                                     //"currency",
                                     3 => $configRepository->get("HeidelGatewayPlenty.secret"),      //"secret"
@@ -127,7 +127,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                                 ],
                                 "authorize" => [
                                     0 => "https://heidelpay-dev.plentymarkets-cloud01.com/",        //"paymentFrameOrigin",
-                                    1 => true,                                                      //"preventAsyncRedirect",
+                                    1 => "TRUE",                                                      //"preventAsyncRedirect",
                                     2 => null,                                                      //"cssPath"
                                 ]
                             )
