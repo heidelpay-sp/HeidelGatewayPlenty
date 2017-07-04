@@ -15,9 +15,9 @@ try {
     $paramsToSend[3] = "31HA07BC8142C5A171744F3D6D155865";//$configRepository->get('HeidelGatewayPlenty.hgw_cc_channel');
     $paramsToSend[4] = true;
 
-    if ($configRepository->get('HeidelGatewayPlenty.transactionmode')) {
+   // if ($configRepository->get('HeidelGatewayPlenty.transactionmode')) {
         $paramsToSend[4] = false;
-    }
+    //}
     return 'hallo';
     $creditCardMethod->getRequest()->authentification($paramsToSend);
 
