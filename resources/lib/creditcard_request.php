@@ -51,7 +51,7 @@ try {
         'TRUE',
         null
     );
-    return 'hallo1';
+  //  return 'hallo1';
     return $creditCardMethod->getResponse()->getPresentation()->getAmount();
     /* if($cardPaymentMethod->getResponse()->isSuccess())
      {
