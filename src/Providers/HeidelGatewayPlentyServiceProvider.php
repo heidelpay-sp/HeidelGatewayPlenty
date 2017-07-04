@@ -93,7 +93,46 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                     $adresse = $addressRepo->findAddressById($shippingAddressId);
                         $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$adresse->firstName);*/
                     /* ************************************************************************************ */
-                        $creditcardRequest = $libCall->call("HeidelGatewayPlenty::creditcard_request");
+                        $creditcardRequest = $libCall->call(
+                            "HeidelGatewayPlenty::creditcard_request",
+                            $params = array(
+                                "authentification" => [
+                                    0 => $configRepository->get('HeidelGatewayPlenty.securitySender'),
+                                    1 => $configRepository->get('HeidelGatewayPlenty.login'),
+                                    2 => $configRepository->get('HeidelGatewayPlenty.password'),
+                                    3 => $configRepository->get('HeidelGatewayPlenty.hgw_cc_channel'),
+                                    4 => true
+                                ],
+                                "customerAddress" => [
+                                    0 => "nameGiven",
+                                    1 => "nameFamily",
+                                    2 => "nameCompany",
+                                    3 => "shopperId:",
+                                    3 => "addressStreet",
+                                    4 => "addressState",
+                                    5 => "addressZip",
+                                    6 => "addressCity",
+                                    7 => "addressCountry",
+                                    8 => "contactMail"
+                                ],
+                                "basketData" => [
+                                    0 => "ShopIdentifier",
+                                    1 => "amount",
+                                    2 => "currency",
+                                    3 => "secret"
+                                ],
+                                "async" => [
+                                    0 => "languageCode",
+                                    1 => "responseUrl"
+                                ],
+                                "authorize" => [
+                                    0 => "paymentFrameOrigin",
+                                    1 => "preventAsyncRedirect",
+                                    2 => "cssPath"
+                                ]
+                            )
+
+                            );
 
                         $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($creditcardRequest));
 						$event->setType('htmlContent');
