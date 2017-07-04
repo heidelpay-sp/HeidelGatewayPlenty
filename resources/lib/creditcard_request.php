@@ -1,6 +1,6 @@
 <?php
 use Plenty\Plugin\ConfigRepository;
-
+try {
     $configRepository = new ConfigRepository;
 
     // Filling Request-Object with Data
@@ -19,42 +19,45 @@ use Plenty\Plugin\ConfigRepository;
     $creditCardMethod->getRequest()->authentification($paramsToSend);
 
     $creditCardMethod->getRequest()->customerAddress(
-       'John',
-       'Doe',
-       null,
-       '12345',
-       'Vangerowstr. 5',
-       null,
-       '69115',
-       'Heidelberg',
-       'Deutschland',
-       'sascha.pflueger@heidelpay.de'
+        'John',
+        'Doe',
+        null,
+        '12345',
+        'Vangerowstr. 5',
+        null,
+        '69115',
+        'Heidelberg',
+        'Deutschland',
+        'sascha.pflueger@heidelpay.de'
     );
 
     $creditCardMethod->getRequest()->basketData(
-       '1234',
-       '15.30',
-       'EUR',
+        '1234',
+        '15.30',
+        'EUR',
         $configRepository->get('HeidelGatewayPlenty.secret')
-     );
+    );
 
     $creditCardMethod->getRequest()->async(
-       'DE',
-       'https://heidelpay-dev.plentymarkets-cloud01.com'
-     );
+        'DE',
+        'https://heidelpay-dev.plentymarkets-cloud01.com'
+    );
 
-     $creditCardMethod->authorize(
-       'https://heidelpay-dev.plentymarkets-cloud01.com',
-       'TRUE',
-       null
-      );
+    $creditCardMethod->authorize(
+        'https://heidelpay-dev.plentymarkets-cloud01.com',
+        'TRUE',
+        null
+    );
 
-     return $creditCardMethod->getResponse()->getPresentation()->getAmount();
-       /* if($cardPaymentMethod->getResponse()->isSuccess())
-        {
-           return $cardPaymentMethod->getRequest()->getPresentation()->getAmount();
+    return $creditCardMethod->getResponse()->getPresentation()->getAmount();
+    /* if($cardPaymentMethod->getResponse()->isSuccess())
+     {
+        return $cardPaymentMethod->getRequest()->getPresentation()->getAmount();
 
-        } else {
-            return "schade";
-        }
+     } else {
+         return "schade";
+     }
 */
+} catch (Exception $e){
+    return "boom";
+}

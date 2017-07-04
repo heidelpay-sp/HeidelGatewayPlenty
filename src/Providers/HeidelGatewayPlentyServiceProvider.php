@@ -84,11 +84,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
 
-
-                    $creditcardRequest = $libCall->call("HeidelGatewayPlenty::creditcard_request");
-
-                    /* ************************************************************************************ */
-                   /* $shippingAddressId = $warenkorb->customerShippingAddressId;
+                     /* ************************************************************************************ */
+                    /* $shippingAddressId = $warenkorb->customerShippingAddressId;
                     if($shippingAddressId == -99)
                     {
                         $shippingAddressId = $warenkorb->customerInvoiceAddressId;
@@ -96,7 +93,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                     $adresse = $addressRepo->findAddressById($shippingAddressId);
                         $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$adresse->firstName);*/
                     /* ************************************************************************************ */
-						$event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($creditcardRequest));
+                        $creditcardRequest = $libCall->call("HeidelGatewayPlenty::creditcard_request");
+
+                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($creditcardRequest));
 						$event->setType('htmlContent');
 					}
             });
