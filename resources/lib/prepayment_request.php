@@ -1,5 +1,5 @@
 <?php
-$params = SdkRestApi::getParam("params");
+$params = SdkRestApi::getParam("authentification");
 return $params;
 //$params = json_decode($params,true);
 try {
