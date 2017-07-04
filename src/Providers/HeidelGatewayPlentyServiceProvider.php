@@ -94,7 +94,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                         $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$adresse->firstName);*/
                     /* ************************************************************************************ */
                         $creditcardRequest = $libCall->call(
-                            "HeidelGatewayPlenty::creditcard_request",
+                            "HeidelGatewayPlenty::prepayment_request",
                             $params = array(
                                 "authentification" => [
                                     0 => $configRepository->get('HeidelGatewayPlenty.securitySender'),
