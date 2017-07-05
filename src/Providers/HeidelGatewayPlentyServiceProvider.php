@@ -110,7 +110,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                             5 => null,                                                      //"addressState",
                             6 => "69115",                                                   //"addressZip",
                             7 => "Heidelberg",                                              //"addressCity",
-                            8 => "EN",                                                      //"addressCountry",
+                            8 => "DE",                                                      //"addressCountry",
                             9 => "sascha.pflueger@heidelpay.de",                            //"contactMail"
                         ],
                         "basketData" => [
