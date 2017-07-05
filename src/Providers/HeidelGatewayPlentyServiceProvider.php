@@ -115,7 +115,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                         ],
                         "basketData" => [
                             0 => "2",                                                   //"ShopIdentifier",
-                            1 => 15.60,                                                     //"amount",
+                            1 => "15.60",                                                     //"amount",
                             2 => "EUR",                                                     //"currency",
                             3 => $configRepository->get("HeidelGatewayPlenty.secret"),      //"secret"
                         ],
