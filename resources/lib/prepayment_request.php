@@ -7,7 +7,8 @@ try {
         $params[0],
         $params[1],
         $params[2],
-        (bool)$params[3]
+        $params[3],
+        true
     );
 
     $params = SdkRestApi::getParam("customerAddress");
