@@ -114,8 +114,6 @@
             "label"     : "Kreditkarte Vorkasse Aktiv",
             "type"      : "checkbox",
             "default"	: false
-        },
-        
-
-    ]
+        }
+     ]
 
