@@ -95,7 +95,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                     /* ************************************************************************************ */
                     $params = array(
                         "authentification" => [
-                            "securty_sender"        => $configRepository->get('HeidelGatewayPlenty.securitySender'),
+                            "security_sender"       => $configRepository->get('HeidelGatewayPlenty.securitySender'),
                             "user_login"            => $configRepository->get('HeidelGatewayPlenty.login'),
                             "user_password"         => $configRepository->get('HeidelGatewayPlenty.password'),
                             "transaction_channel"   => $configRepository->get('HeidelGatewayPlenty.hgw_pp_channel'),

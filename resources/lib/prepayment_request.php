@@ -7,7 +7,7 @@ try {
 
     $params = SdkRestApi::getParam("authentification");
     $prepaymentPaymentMethod->getRequest()->authentification(
-        $params["securty_sender"],
+        $params["security_sender"],
         $params["user_login"],
         $params["user_password"],
         $params[transaction_channel],
