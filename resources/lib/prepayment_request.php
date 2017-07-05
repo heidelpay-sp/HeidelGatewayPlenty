@@ -45,13 +45,18 @@ try {
 
     $prepaymentPaymentMethod->authorize();
 
-    $params0 = SdkRestApi::getParam("authentification");
-    $params1 = SdkRestApi::getParam("customerAddress");
-    $params2 = SdkRestApi::getParam("basketData");
-    $params3 = SdkRestApi::getParam("async");
+    $paramsAuth         = SdkRestApi::getParam("authentification");
+    $paramsCustomerData = SdkRestApi::getParam("customerAddress");
+    $paramsBasketData   = SdkRestApi::getParam("basketData");
+    $paramsAsync        = SdkRestApi::getParam("async");
 
 
-    return json_encode($params0).json_decode($params1).json_decode($params2).json_decode($params3);
+    return json_encode(
+        $paramsAuth
+//        $paramsCustomerData
+//        $paramsBasketData
+//        $paramsAsync
+        );
 
     return json_encode($prepaymentPaymentMethod->getResponse()->getError());
 //    return $params["authentification"][0].' '.$params["authentification"][1].' '.$params["authentification"][2].' '.$params["authentification"][3];
