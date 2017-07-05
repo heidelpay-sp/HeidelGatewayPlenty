@@ -51,7 +51,7 @@ try {
     $params3 = SdkRestApi::getParam("async");
 
 
-    return json_encode($params0.$params1.$params2.$params3);
+    return json_encode($params0).json_decode($params1).json_decode($params2).json_decode($params3);
 
     return json_encode($prepaymentPaymentMethod->getResponse()->getError());
 //    return $params["authentification"][0].' '.$params["authentification"][1].' '.$params["authentification"][2].' '.$params["authentification"][3];
