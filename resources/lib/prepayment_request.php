@@ -1,4 +1,7 @@
 <?php
+/*
+ * all given parameters are converted to strings because plenty uses http in general
+ */
 try {
     $prepaymentPaymentMethod = new \Heidelpay\PhpApi\PaymentMethods\PrepaymentPaymentMethod();
 
@@ -8,7 +11,7 @@ try {
         $params[1],
         $params[2],
         $params[3],
-        true
+        ($params[4] == 'false') ? false : true
     );
 
     $params = SdkRestApi::getParam("customerAddress");
