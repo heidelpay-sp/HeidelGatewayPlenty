@@ -51,8 +51,8 @@ try {
     /**
      *
      */
-    $params = SdkRestApi::getParam("customerAddress");
-    return $params[7];
+//    $params = SdkRestApi::getParam("customerAddress");
+//    return $params[7];
     /**
      *
      */
