@@ -41,7 +41,7 @@ try {
         $params[1]
     );
 
-    $prepaymentPaymentMethod->getRequest()->getFrontend()->set('enabled','FALSE');
+//    $prepaymentPaymentMethod->getRequest()->getFrontend()->set('enabled','FALSE');
 
     $prepaymentPaymentMethod->authorize();
 
