@@ -99,7 +99,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                             1 => $configRepository->get('HeidelGatewayPlenty.login'),
                             2 => $configRepository->get('HeidelGatewayPlenty.password'),
                             3 => $configRepository->get('HeidelGatewayPlenty.hgw_pp_channel'),
-                            4 => 'TRUE'
+                            4 => TRUE
                         ],
                         "customerAddress" => [
                             0 => "Albert",                                                  //"nameGiven",
@@ -114,7 +114,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                             9 => "sascha.pflueger@heidelpay.de",                            //"contactMail"
                         ],
                         "basketData" => [
-                            0 => "12345",                                                   //"ShopIdentifier",
+                            0 => "2",                                                   //"ShopIdentifier",
                             1 => 15.60,                                                     //"amount",
                             2 => "EUR",                                                     //"currency",
                             3 => $configRepository->get("HeidelGatewayPlenty.secret"),      //"secret"
