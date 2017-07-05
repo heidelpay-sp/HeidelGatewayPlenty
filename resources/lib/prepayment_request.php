@@ -1,7 +1,4 @@
 <?php
-
-
-//$params = json_decode($params,true);
 try {
     $prepaymentPaymentMethod = new \Heidelpay\PhpApi\PaymentMethods\PrepaymentPaymentMethod();
 
@@ -58,7 +55,7 @@ try {
 //        $paramsAsync
 //        );
 
-    return json_encode($prepaymentPaymentMethod->getResponse()->getError());
+    return json_encode($prepaymentPaymentMethod->toJson());
 //    return $params["authentification"][0].' '.$params["authentification"][1].' '.$params["authentification"][2].' '.$params["authentification"][3];
 
 } catch (Exception $e){
