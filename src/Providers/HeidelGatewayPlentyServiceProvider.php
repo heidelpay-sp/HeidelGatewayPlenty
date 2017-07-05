@@ -132,7 +132,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                     $prepaymentRequest = $libCall->call(
                        "HeidelGatewayPlenty::prepayment_request",$params);
 
-                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.$prepaymentRequest);
+                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
 						$event->setType('htmlContent');
 					}
             });
