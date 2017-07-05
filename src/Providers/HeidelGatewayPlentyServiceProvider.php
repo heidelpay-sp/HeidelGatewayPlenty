@@ -115,7 +115,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                         ],
                         "basketData" => [
                             0 => "12345",                                                   //"ShopIdentifier",
-                            1 => 15.60,                                                   //"amount",
+                            1 => 15.60,                                                     //"amount",
                             2 => "EUR",                                                     //"currency",
                             3 => $configRepository->get("HeidelGatewayPlenty.secret"),      //"secret"
                         ],
@@ -124,9 +124,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                             1 => "https://heidelpay-dev.plentymarkets-cloud01.com/"         //"responseUrl"
                         ],
                         "authorize" => [
-//                                    0 => "https://heidelpay-dev.plentymarkets-cloud01.com/",        //"paymentFrameOrigin",
-//                                    1 => "TRUE",                                                      //"preventAsyncRedirect",
-//                                    2 => null,                                                      //"cssPath"
+//                                    0 => "https://heidelpay-dev.plentymarkets-cloud01.com/",   //"paymentFrameOrigin",
+//                                    1 => "TRUE",                                               //"preventAsyncRedirect",
+//                                    2 => null,                                                 //"cssPath"
                         ]
                     );
                     $creditcardRequest = $libCall->call(

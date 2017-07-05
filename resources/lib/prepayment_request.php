@@ -47,11 +47,11 @@ try {
     /**
      *
      */
-    $params = SdkRestApi::getParam("customerAddress");
-    return "Vorname: ".$params[0]."</br>Nachname: ".$params[1]."</br>Company: ".$params[2].
-        "</br>KundenNr: ".$params[3]."</br>Straße: ".$params[4]."</br> Null:".$params[5].
-        "</br>Plz: ".$params[6]."</br>Ort: ".$params[7]."</br>Country: ".$params[8].
-        "</br>Email: ".$params[9];
+//    $params = SdkRestApi::getParam("customerAddress");
+//    return "Vorname: ".$params[0]."</br>Nachname: ".$params[1]."</br>Company: ".$params[2].
+//        "</br>KundenNr: ".$params[3]."</br>Straße: ".$params[4]."</br> Null:".$params[5].
+//        "</br>Plz: ".$params[6]."</br>Ort: ".$params[7]."</br>Country: ".$params[8].
+//        "</br>Email: ".$params[9];
     /**
      *
      */
