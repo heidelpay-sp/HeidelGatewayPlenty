@@ -42,12 +42,8 @@ try {
 
     $prepaymentPaymentMethod->getRequest()->getFrontend()->set('enabled','FALSE');
 
-    $prepaymentPaymentMethod->authorize(
-//        $params["authorize"][0],
-//        $params["authorize"][1],
-//        $params["authorize"][2]
-    );
-
+    $prepaymentPaymentMethod->authorize();
+mail("sascha.pflueger@heidelpay.de","TestPlenty",print_r("Test",1));
     /**
      *
      */
