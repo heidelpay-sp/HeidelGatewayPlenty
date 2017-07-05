@@ -41,7 +41,7 @@ try {
         $params[1]
     );
 
-//    $prepaymentPaymentMethod->getRequest()->getFrontend()->set('enabled','FALSE');
+    $prepaymentPaymentMethod->getRequest()->getFrontend()->set('enabled','FALSE');
 
     $prepaymentPaymentMethod->authorize();
 
@@ -51,12 +51,12 @@ try {
     $paramsAsync        = SdkRestApi::getParam("async");
 
 
-    return json_encode(
-        $paramsAuth
+//    return json_encode(
+//        $paramsAuth
 //        $paramsCustomerData
 //        $paramsBasketData
 //        $paramsAsync
-        );
+//        );
 
     return json_encode($prepaymentPaymentMethod->getResponse()->getError());
 //    return $params["authentification"][0].' '.$params["authentification"][1].' '.$params["authentification"][2].' '.$params["authentification"][3];
