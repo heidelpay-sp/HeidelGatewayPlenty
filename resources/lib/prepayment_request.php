@@ -3,10 +3,10 @@
 
 //$params = json_decode($params,true);
 try {
-    $creditCardMethod = new \Heidelpay\PhpApi\PaymentMethods\PrepaymentPaymentMethod();
+    $prepaymentPaymentMethod = new \Heidelpay\PhpApi\PaymentMethods\PrepaymentPaymentMethod();
 
     $params = SdkRestApi::getParam("authentification");
-    $creditCardMethod->getRequest()->authentification(
+    $prepaymentPaymentMethod->getRequest()->authentification(
         $params[0],
         $params[1],
         $params[2],
@@ -14,7 +14,7 @@ try {
     );
 
     $params = SdkRestApi::getParam("customerAddress");
-    $creditCardMethod->getRequest()->customerAddress(
+    $prepaymentPaymentMethod->getRequest()->customerAddress(
         $params[0],
         $params[1],
         $params[2],
@@ -27,7 +27,7 @@ try {
     );
 
     $params = SdkRestApi::getParam("basketData");
-    $creditCardMethod->getRequest()->basketData(
+    $prepaymentPaymentMethod->getRequest()->basketData(
         $params[0],
         $params[1],
         $params[2],
@@ -35,21 +35,28 @@ try {
     );
 
     $params = SdkRestApi::getParam("async");
-    $creditCardMethod->getRequest()->async(
+    $prepaymentPaymentMethod->getRequest()->async(
         $params[0],
         $params[1]
     );
 
-    $creditCardMethod->getRequest()->getFrontend()->set('enabled','FALSE');
+    $prepaymentPaymentMethod->getRequest()->getFrontend()->set('enabled','FALSE');
 
-    $creditCardMethod->authorize(
+    $prepaymentPaymentMethod->authorize(
 //        $params["authorize"][0],
 //        $params["authorize"][1],
 //        $params["authorize"][2]
     );
 
-
-    return json_encode($creditCardMethod->getResponse()->getError());
+    /**
+     *
+     */
+    $params = SdkRestApi::getParam("customerAddress");
+    return $params[7];
+    /**
+     *
+     */
+    return json_encode($prepaymentPaymentMethod->getResponse()->getError());
 //    return $params["authentification"][0].' '.$params["authentification"][1].' '.$params["authentification"][2].' '.$params["authentification"][3];
 
 } catch (Exception $e){
