@@ -55,6 +55,9 @@ try {
     /**
      *
      */
+    $params = SdkRestApi::getParam("authentification");
+    return $params[1];
+
     return json_encode($prepaymentPaymentMethod->getResponse()->getError());
 //    return $params["authentification"][0].' '.$params["authentification"][1].' '.$params["authentification"][2].' '.$params["authentification"][3];
 
