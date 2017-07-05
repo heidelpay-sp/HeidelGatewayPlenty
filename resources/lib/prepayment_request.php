@@ -23,7 +23,8 @@ try {
         $params[5],
         $params[6],
         $params[7],
-        $params[8]
+        $params[8],
+        $params[9]
     );
 
     $params = SdkRestApi::getParam("basketData");
@@ -46,9 +47,11 @@ try {
     /**
      *
      */
-//    $params = SdkRestApi::getParam("customerAddress");
-//    return "Vorname: ".$params[0]."</br>Nachname: ".$params[1]."</br>Company: ".$params[2].
-//        "</br>KundenNr: ".$params[3]."</br>".$params[4]."</br>".$params[5]."</br>".$params[6]."</br>".$params[7]."</br>";
+    $params = SdkRestApi::getParam("customerAddress");
+    return "Vorname: ".$params[0]."</br>Nachname: ".$params[1]."</br>Company: ".$params[2].
+        "</br>KundenNr: ".$params[3]."</br>Straße: ".$params[4]."</br> Null:".$params[5].
+        "</br>Plz: ".$params[6]."</br>Ort: ".$params[7]."</br>Country: ".$params[8].
+        "</br>Email: ".$params[9];
     /**
      *
      */
