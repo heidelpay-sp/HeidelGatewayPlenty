@@ -4,7 +4,9 @@
  */
 try {
     $prepaymentPaymentMethod = new \Heidelpay\PhpApi\PaymentMethods\PrepaymentPaymentMethod();
-
+    /**
+     * @todo Parameter wieder in Ziffern convertieren
+     */
     $params = SdkRestApi::getParam("authentification");
     $prepaymentPaymentMethod->getRequest()->authentification(
         $params["security_sender"],
