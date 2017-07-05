@@ -43,12 +43,12 @@ try {
     $prepaymentPaymentMethod->getRequest()->getFrontend()->set('enabled','FALSE');
 
     $prepaymentPaymentMethod->authorize();
-mail("sascha.pflueger@heidelpay.de","TestPlenty",print_r("Test",1));
     /**
      *
      */
 //    $params = SdkRestApi::getParam("customerAddress");
-//    return $params[7];
+//    return "Vorname: ".$params[0]."</br>Nachname: ".$params[1]."</br>Company: ".$params[2].
+//        "</br>KundenNr: ".$params[3]."</br>".$params[4]."</br>".$params[5]."</br>".$params[6]."</br>".$params[7]."</br>";
     /**
      *
      */

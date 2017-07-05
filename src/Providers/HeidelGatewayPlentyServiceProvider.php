@@ -106,12 +106,12 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                             1 => "Alfa",                                                    //"nameFamily",
                             2 => null,                                                      //"nameCompany",
                             3 => "147",                                                     //"shopperId",
-                            3 => "Vangerowstr. 18",                                         //"addressStreet",
-                            4 => null,                                                      //"addressState",
-                            5 => "69115",                                                   //"addressZip",
-                            6 => "Heidelberg",                                              //"addressCity",
-                            7 => "EN",                                                      //"addressCountry",
-                            8 => "sascha.pflueger@heidelpay.de",                            //"contactMail"
+                            4 => "Vangerowstr. 18",                                         //"addressStreet",
+                            5 => null,                                                      //"addressState",
+                            6 => "69115",                                                   //"addressZip",
+                            7 => "Heidelberg",                                              //"addressCity",
+                            8 => "EN",                                                      //"addressCountry",
+                            9 => "sascha.pflueger@heidelpay.de",                            //"contactMail"
                         ],
                         "basketData" => [
                             0 => "12345",                                                   //"ShopIdentifier",
