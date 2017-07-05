@@ -47,7 +47,7 @@ class CreatePaymentMethod
 					'name' => 'Heidelpay CD-Edition Kreditkarte');
 			$this->paymentMethodRepositoryContract->createPaymentMethod($paymentMethodData);
 		}
-		// Check whether the ID of the PayPal Express payment method has been created
+
 		
 	}
 }
