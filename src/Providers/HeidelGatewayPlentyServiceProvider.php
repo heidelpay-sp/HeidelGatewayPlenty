@@ -99,7 +99,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                             1 => $configRepository->get('HeidelGatewayPlenty.login'),
                             2 => $configRepository->get('HeidelGatewayPlenty.password'),
                             3 => $configRepository->get('HeidelGatewayPlenty.hgw_pp_channel'),
-                            4 => true
+                            4 => 'true'
                         ],
                         "customerAddress" => [
                             0 => "Albert",                                                  //"nameGiven",
