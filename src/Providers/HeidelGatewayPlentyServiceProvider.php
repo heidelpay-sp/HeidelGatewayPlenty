@@ -95,9 +95,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 //                        $shippingAddressId = $warenkorb->customerInvoiceAddressId;
 //                    }
 //                   $adresse = $addressRepo->findAddressById($shippingAddressId);
-                    $accountService = pluginApp(\Plenty\Modules\Frontend\Services\AccountService::class);
-                     $contactId = $accountService->getAccountContactId();
-                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$contactId);
+//                    $accountService = pluginApp(\Plenty\Modules\Frontend\Services\AccountService::class);
+//                     $contactId = $accountService->getAccountContactId();
+//                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$contactId);
 
 
                     /* ************************************************************************************ */
@@ -137,11 +137,11 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 //                                    2 => null,                                                 //"cssPath"
                         ]
                     );
-//                    $prepaymentRequest = $libCall->call(
-//                       "HeidelGatewayPlenty::prepayment_request",$params);
-//
-//                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
-//						$event->setType('htmlContent');
+                    $prepaymentRequest = $libCall->call(
+                       "HeidelGatewayPlenty::prepayment_request",$params);
+
+                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
+						$event->setType('htmlContent');
 					}
             });
 
