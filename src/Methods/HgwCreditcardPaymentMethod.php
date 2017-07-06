@@ -124,7 +124,7 @@ class HgwCreditcardPaymentMethod extends PaymentMethodService
      */
     public function isSwitchableTo($orderId)
     {
-        return false;
+        return true;
     }
 
     /**
