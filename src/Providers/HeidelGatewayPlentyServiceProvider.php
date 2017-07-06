@@ -21,6 +21,8 @@ use HeidelGatewayPlenty\Methods\HgwCreditcardPaymentMethod;
 use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
 use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 use Plenty\Modules\Account\Contact\Models\Contact;
+
+use Plenty\Modules\Frontend\Services\AccountService;
 /* ************************************************************************************ */
 use \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod;
 
@@ -50,7 +52,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         ConfigRepository $configRepository,
         LibraryCallContract $libCall,
 
-        AddressRepositoryContract $addressRepo
+        AddressRepositoryContract $addressRepo,
+        AccountService $acountService
 
     )
     {
@@ -81,18 +84,21 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
         // Listen for the event that gets the payment method content
         $eventDispatcher->listen(GetPaymentMethodContent::class,
-            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $addressRepo) {
+            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $addressRepo, $acountService) {
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
 
                      /* ************************************************************************************ */
                      $shippingAddressId = $warenkorb->customerShippingAddressId;
-                    if($shippingAddressId == -99)
-                    {
-                        $shippingAddressId = $warenkorb->customerInvoiceAddressId;
-                    }
-                    $adresse = $addressRepo->findAddressById($shippingAddressId);
-                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$adresse->firstName);
+//                    if($shippingAddressId == -99)
+//                    {
+//                        $shippingAddressId = $warenkorb->customerInvoiceAddressId;
+//                    }
+//                   $adresse = $addressRepo->findAddressById($shippingAddressId);
+                     $contactId = $acountService->getAccountContactId();
+                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$shippingAddressId);
+
+
                     /* ************************************************************************************ */
                     $params = array(
                         "authentification" => [
