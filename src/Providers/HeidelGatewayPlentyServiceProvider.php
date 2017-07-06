@@ -52,8 +52,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         LibraryCallContract $libCall,
 
         AddressRepositoryContract $addressRepo,
-        AccountService $acountService,
-        Contracts $sessionStorrageContacts
+//        AccountService $acountService,
+        FrontendSessionStorageFactoryContract $sessionStorrageContacts
 
     )
     {
