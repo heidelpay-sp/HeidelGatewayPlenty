@@ -89,14 +89,14 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                     $warenkorb = $warenkorb->load();
 
                      /* ************************************************************************************ */
-                     $shippingAddressId = $warenkorb->customerShippingAddressId;
+//                     $shippingAddressId = $warenkorb->customerShippingAddressId;
 //                    if($shippingAddressId == -99)
 //                    {
 //                        $shippingAddressId = $warenkorb->customerInvoiceAddressId;
 //                    }
 //                   $adresse = $addressRepo->findAddressById($shippingAddressId);
                      $contactId = $acountService->getAccountContactId();
-                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$shippingAddressId);
+                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$contactId);
 
 
                     /* ************************************************************************************ */
