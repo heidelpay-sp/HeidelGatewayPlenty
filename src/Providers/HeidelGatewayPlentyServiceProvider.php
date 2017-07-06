@@ -52,8 +52,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         ConfigRepository $configRepository,
         LibraryCallContract $libCall,
 
-        AddressRepositoryContract $addressRepo,
-        AccountService $acountService
+        AddressRepositoryContract $addressRepo
+        //AccountService $acountService
 
     )
     {
@@ -84,7 +84,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
         // Listen for the event that gets the payment method content
         $eventDispatcher->listen(GetPaymentMethodContent::class,
-            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $addressRepo, $acountService) {
+            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $addressRepo) {
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
 
@@ -95,7 +95,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 //                        $shippingAddressId = $warenkorb->customerInvoiceAddressId;
 //                    }
 //                   $adresse = $addressRepo->findAddressById($shippingAddressId);
-                     $contactId = $acountService->getAccountContactId();
+                    $accountService = pluginApp(\Plenty\Modules\Frontend\Services\AccountService::class);
+                     $contactId = $accountService->getAccountContactId();
                      $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$contactId);
 
 
