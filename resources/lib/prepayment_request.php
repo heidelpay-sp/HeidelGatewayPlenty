@@ -4,16 +4,14 @@
  */
 try {
     $prepaymentPaymentMethod = new \Heidelpay\PhpApi\PaymentMethods\PrepaymentPaymentMethod();
-    /**
-     * @todo Parameter wieder in Ziffern convertieren
-     */
+
     $params = SdkRestApi::getParam("authentification");
     $prepaymentPaymentMethod->getRequest()->authentification(
-        $params["security_sender"],
-        $params["user_login"],
-        $params["user_password"],
-        $params[transaction_channel],
-        ($params["transaction_mode"] == 'false') ? false : true
+        $params[0],
+        $params[1],
+        $params[2],
+        $params[3],
+        ($params[4] == 'false') ? false : true
     );
 
     $params = SdkRestApi::getParam("customerAddress");
