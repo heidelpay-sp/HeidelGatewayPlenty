@@ -105,7 +105,15 @@ class HgwCreditcardPaymentMethod extends PaymentMethodService
 	 */
 	public function getDescription( ConfigRepository $configRepository ):string
 	{
-		return 'Testbeschreibung';
+        $description = $configRepository->get('HeidelGatewayPlenty.hgw_cc_description');
+
+        if(!strlen($description))
+        {
+            $description = "";
+        }
+
+        return $description;
+
 	}
 
     /**

@@ -59,6 +59,13 @@
             "default"	: "Heidelpay CD-Edition Kreditkarte"
         },
         {
+          "tab"       : "Grundeinstellungen",
+          "key"       : "hgw_cc_description",
+          "label"     : "Beschreibung Kreditkarte",
+          "type"      : "text",
+          "default"	  : "Testbeschreibung"
+        },
+        {
             "tab"       : "Grundeinstellungen",
             "key"       : "hgw_cc_channel",
             "label"     : "Channel Kreditkarte",
