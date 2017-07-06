@@ -48,9 +48,10 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         Dispatcher $eventDispatcher,
         BasketRepositoryContract $warenkorb,
         ConfigRepository $configRepository,
-        LibraryCallContract $libCall
+        LibraryCallContract $libCall,
 
-       //, AddressRepositoryContract $addressRepo
+        AddressRepositoryContract $addressRepo
+
     )
     {
         // Create the ID of the payment method if it doesn't exist yet
@@ -80,18 +81,18 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
         // Listen for the event that gets the payment method content
         $eventDispatcher->listen(GetPaymentMethodContent::class,
-            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall /*, $addressRepo*/) {
+            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $addressRepo) {
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
 
                      /* ************************************************************************************ */
-                    /* $shippingAddressId = $warenkorb->customerShippingAddressId;
+                     $shippingAddressId = $warenkorb->customerShippingAddressId;
                     if($shippingAddressId == -99)
                     {
                         $shippingAddressId = $warenkorb->customerInvoiceAddressId;
                     }
                     $adresse = $addressRepo->findAddressById($shippingAddressId);
-                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$adresse->firstName);*/
+                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$adresse->firstName);
                     /* ************************************************************************************ */
                     $params = array(
                         "authentification" => [
@@ -129,12 +130,12 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 //                                    2 => null,                                                 //"cssPath"
                         ]
                     );
-                    $prepaymentRequest = $libCall->call(
-                       "HeidelGatewayPlenty::prepayment_request",$params);
-
-                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
-						$event->setType('htmlContent');
-					}
+//                    $prepaymentRequest = $libCall->call(
+//                       "HeidelGatewayPlenty::prepayment_request",$params);
+//
+//                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
+//						$event->setType('htmlContent');
+//					}
             });
 
 
