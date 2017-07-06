@@ -22,13 +22,12 @@ use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
 use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 use Plenty\Modules\Account\Contact\Models\Contact;
 
-use Plenty\Modules\Frontend\Services\AccountService;
+use Plenty\Modules\Frontend\Session\Storage\Contracts;
 /* ************************************************************************************ */
-use \Heidelpay\PhpApi\PaymentMethods\CreditCardPaymentMethod;
 
 /**
- * Class PayUponPickupServiceProvider
- * @package PayUponPickup\Providers
+ * Class HeidelGatewayPlentyServiceProvider
+ * @package HeidelGatewayPlenty\Providers
  */
 class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 {
@@ -52,8 +51,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         ConfigRepository $configRepository,
         LibraryCallContract $libCall,
 
-        AddressRepositoryContract $addressRepo
-        //AccountService $acountService
+        AddressRepositoryContract $addressRepo,
+        AccountService $acountService,
+        Contracts $sessionStorrageContacts
 
     )
     {
@@ -84,10 +84,11 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
         // Listen for the event that gets the payment method content
         $eventDispatcher->listen(GetPaymentMethodContent::class,
-            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $addressRepo) {
+            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $addressRepo, $sessionStorrageContacts) {
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
-
+                    $customer = $sessionStorrageContacts->getCustomer();
+                    $customer = $customer->toArray();
                      /* ************************************************************************************ */
 //                     $shippingAddressId = $warenkorb->customerShippingAddressId;
 //                    if($shippingAddressId == -99)
@@ -97,7 +98,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 //                   $adresse = $addressRepo->findAddressById($shippingAddressId);
 //                    $accountService = pluginApp(\Plenty\Modules\Frontend\Services\AccountService::class);
 //                     $contactId = $accountService->getAccountContactId();
-//                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$contactId);
+                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$customer[0]);
 
 
                     /* ************************************************************************************ */
@@ -140,9 +141,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                     $prepaymentRequest = $libCall->call(
                        "HeidelGatewayPlenty::prepayment_request",$params);
 
-                        $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
-						$event->setType('htmlContent');
-					}
+//                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
+//					$event->setType('htmlContent');
+                }
             });
 
 
