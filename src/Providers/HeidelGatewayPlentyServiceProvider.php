@@ -22,7 +22,9 @@ use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
 use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 use Plenty\Modules\Account\Contact\Models\Contact;
 
-use Plenty\Modules\Frontend\Session\Storage\Contracts;
+// um an den Kundenaccount heranzukommen
+use Plenty\Modules\Frontend\Services\AccountService;
+
 /* ************************************************************************************ */
 
 /**
@@ -51,8 +53,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         ConfigRepository $configRepository,
         LibraryCallContract $libCall,
 
+        AccountService $accountService,
+
         AddressRepositoryContract $addressRepo,
-//        AccountService $acountService,
         FrontendSessionStorageFactoryContract $sessionStorrageContacts
 
     )
@@ -84,11 +87,13 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
         // Listen for the event that gets the payment method content
         $eventDispatcher->listen(GetPaymentMethodContent::class,
-            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $addressRepo, $sessionStorrageContacts) {
+            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $addressRepo, $accountService) {
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
-                    $customer = $sessionStorrageContacts->getCustomer();
-                    $customer = $customer->toArray();
+
+                    $accountService = pluginApp(AccountService::class);
+                    $currentContactId = $accountService->getAccountContactId();
+
                      /* ************************************************************************************ */
 //                     $shippingAddressId = $warenkorb->customerShippingAddressId;
 //                    if($shippingAddressId == -99)
@@ -98,8 +103,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 //                   $adresse = $addressRepo->findAddressById($shippingAddressId);
 //                    $accountService = pluginApp(\Plenty\Modules\Frontend\Services\AccountService::class);
 //                     $contactId = $accountService->getAccountContactId();
-                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$customer[0]);
-
+                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$currentContactId);
+                     $event->setType('htmlContent');
 
                     /* ************************************************************************************ */
                     $params = array(
