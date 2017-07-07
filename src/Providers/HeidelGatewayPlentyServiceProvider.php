@@ -18,12 +18,12 @@ use Plenty\Plugin\ConfigRepository;
 use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
 use HeidelGatewayPlenty\Methods\HgwCreditcardPaymentMethod;
 /* ************************************************************************************ */
-use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
-use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
-use Plenty\Modules\Account\Contact\Models\Contact;
+//use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
+//use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
+//use Plenty\Modules\Account\Contact\Models\Contact;
 
 // um an den Kundenaccount heranzukommen
-use Plenty\Modules\Frontend\Services\AccountService;
+//use Plenty\Modules\Frontend\Services\AccountService;
 
 /* ************************************************************************************ */
 
@@ -51,10 +51,11 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         Dispatcher $eventDispatcher,
         BasketRepositoryContract $warenkorb,
         ConfigRepository $configRepository,
-        LibraryCallContract $libCall,
+        LibraryCallContract $libCall
+//        ,
 
-        AccountService $accountService,
-        AddressRepositoryContract $addressRepo
+//        AccountService $accountService,
+//        AddressRepositoryContract $addressRepo
     )
     {
         // Create the ID of the payment method if it doesn't exist yet
