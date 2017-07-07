@@ -88,19 +88,12 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
 
-                    $accountService = pluginApp(AccountService::class);
-                    $currentContactId = $accountService->getAccountContactId();
+
 
                      /* ************************************************************************************ */
-//                     $shippingAddressId = $warenkorb->customerShippingAddressId;
-//                    if($shippingAddressId == -99)
-//                    {
-//                        $shippingAddressId = $warenkorb->customerInvoiceAddressId;
-//                    }
-//                   $adresse = $addressRepo->findAddressById($shippingAddressId);
-//                    $accountService = pluginApp(\Plenty\Modules\Frontend\Services\AccountService::class);
-//                     $contactId = $accountService->getAccountContactId();
-                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.$currentContactId);
+                    $accountService = pluginApp(AccountService::class);
+                    $currentContactId = $accountService->getAccountContactId();
+                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($currentContactId));
                      $event->setType('htmlContent');
 
                     /* ************************************************************************************ */
@@ -140,11 +133,10 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 //                                    2 => null,                                                 //"cssPath"
                         ]
                     );
-                    $prepaymentRequest = $libCall->call(
-                       "HeidelGatewayPlenty::prepayment_request",$params);
+//                    $prepaymentRequest = $libCall->call("HeidelGatewayPlenty::prepayment_request",$params);
 
 //                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
-//					$event->setType('htmlContent');
+//					  $event->setType('htmlContent');
                 }
             });
 
