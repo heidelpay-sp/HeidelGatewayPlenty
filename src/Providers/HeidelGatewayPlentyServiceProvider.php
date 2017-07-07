@@ -91,10 +91,10 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
 
                      /* ************************************************************************************ */
-                    $accountService = pluginApp(AccountService::class);
-                    $currentContactId = $accountService->getAccountContactId();
-                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($currentContactId));
-                     $event->setType('htmlContent');
+//                    $accountService = pluginApp(AccountService::class);
+//                    $currentContactId = $accountService->getAccountContactId();
+//                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($currentContactId));
+//                     $event->setType('htmlContent');
 
                     /* ************************************************************************************ */
                     $params = array(
@@ -133,10 +133,10 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 //                                    2 => null,                                                 //"cssPath"
                         ]
                     );
-//                    $prepaymentRequest = $libCall->call("HeidelGatewayPlenty::prepayment_request",$params);
+                    $prepaymentRequest = $libCall->call("HeidelGatewayPlenty::prepayment_request",$params);
 
-//                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
-//					  $event->setType('htmlContent');
+                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
+					  $event->setType('htmlContent');
                 }
             });
 
