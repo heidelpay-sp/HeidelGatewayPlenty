@@ -40,9 +40,9 @@ class PaymentController extends Controller
         ConfigRepository $config
     )
     {
-        $this->request          = $request;
-        $this->response         = $response;
-        $this->config           = $config;
+        $this->request   = $request;
+        $this->response  = $response;
+        $this->config    = $config;
 
     }
 
@@ -58,6 +58,6 @@ class PaymentController extends Controller
 
     public function responseAction($response)
     {
-
+        return $response;
     }
 }
