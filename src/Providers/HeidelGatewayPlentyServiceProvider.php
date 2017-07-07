@@ -23,7 +23,7 @@ use HeidelGatewayPlenty\Methods\HgwCreditcardPaymentMethod;
 //use Plenty\Modules\Account\Contact\Models\Contact;
 
 // um an den Kundenaccount heranzukommen
-//use Plenty\Modules\Frontend\Services\AccountService;
+use Plenty\Modules\Frontend\Services\AccountService;
 
 /* ************************************************************************************ */
 
@@ -51,10 +51,9 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         Dispatcher $eventDispatcher,
         BasketRepositoryContract $warenkorb,
         ConfigRepository $configRepository,
-        LibraryCallContract $libCall
-//        ,
+        LibraryCallContract $libCall,
 
-//        AccountService $accountService,
+        AccountService $accountService
 //        AddressRepositoryContract $addressRepo
     )
     {
