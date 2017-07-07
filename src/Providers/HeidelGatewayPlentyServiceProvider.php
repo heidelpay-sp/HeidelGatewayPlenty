@@ -54,10 +54,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         LibraryCallContract $libCall,
 
         AccountService $accountService,
-
-        AddressRepositoryContract $addressRepo,
-        FrontendSessionStorageFactoryContract $sessionStorrageContacts
-
+        AddressRepositoryContract $addressRepo
     )
     {
         // Create the ID of the payment method if it doesn't exist yet
