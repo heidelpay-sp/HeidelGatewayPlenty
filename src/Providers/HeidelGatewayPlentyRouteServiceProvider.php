@@ -18,7 +18,7 @@ class HeidelGatewayPlentyRouteServiceProvider extends RouteServiceProvider
 		// Get the PayPal success and cancellation URLs
 		$router->get('HeidelGatewayPlenty/checkoutSuccess'	, 'HeidelGatewayPlenty\Controllers\PaymentController@checkoutSuccess');
 		$router->get('HeidelGatewayPlenty/checkoutCancel' 	, 'HeidelGatewayPlenty\Controllers\PaymentController@checkoutCancel' );
-		$router->post('HeidelGatewayPlenty/notification'  	, 'HeidelGatewayPlenty\Controllers\PaymentNotificationController@handleNotification');
+		$router->post('HeidelGatewayPlenty/responseAction' 	, 'HeidelGatewayPlenty\Controllers\PaymentController@responseAction');
 	}
 
 
