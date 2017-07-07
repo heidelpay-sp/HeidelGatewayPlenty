@@ -1,4 +1,7 @@
 <?php
+
+use Plenty\Modules\Frontend\Services\AccountService;
+
 /*
  * all given parameters are converted to strings because plenty uses http in general
  */
@@ -52,8 +55,12 @@ try {
     $paramsAsync        = SdkRestApi::getParam("async");
 
 
+    $accountService = pluginApp(AccountService::class);
+    $currentContactId = $accountService->getAccountContactId();
+
     return
-        $paramsAuth
+        $currentContactId
+//        $paramsAuth
 //        $paramsCustomerData
 //        $paramsBasketData
 //        $paramsAsync
