@@ -7,13 +7,7 @@ use Plenty\Modules\Frontend\Services\AccountService;
  */
 try {
     $prepaymentPaymentMethod = new \Heidelpay\PhpApi\PaymentMethods\PrepaymentPaymentMethod();
-    /**
-     * ******************************************************************************************
-     */
-    $paramTest = SdkRestApi::getParam("warenkorb");
-    /**
-     * ******************************************************************************************
-     */
+
     $params = SdkRestApi::getParam("authentification");
     $prepaymentPaymentMethod->getRequest()->authentification(
         $params[0],
@@ -59,20 +53,16 @@ try {
 //    $paramsCustomerData = SdkRestApi::getParam("customerAddress");
 //    $paramsBasketData   = SdkRestApi::getParam("basketData");
 //    $paramsAsync        = SdkRestApi::getParam("async");
-//
-//
-//    $accountService = pluginApp(AccountService::class);
-//    $currentContactId = $accountService->getAccountContactId();
 
     return
-        $currentContactId
+//        $currentContactId
 //        $paramsAuth
 //        $paramsCustomerData
 //        $paramsBasketData
 //        $paramsAsync
         ;
 
-//    return json_encode($prepaymentPaymentMethod->toJson());
+    return json_encode($prepaymentPaymentMethod->toJson());
 } catch (Exception $e){
     return " boom ".$e->getMessage();
 }
