@@ -95,6 +95,8 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                     $kontakt = $contact->toArray();
                     $contaktId = $warenkorb->toArray();
                     $loginKontakt = $contractRepo->findContactById($contaktId["customerId"]);
+                    $loginKontakt = $loginKontakt->toArray();
+
 
 
 
