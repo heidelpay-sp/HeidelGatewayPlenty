@@ -92,6 +92,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
             function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $contact, $contractRepo,$addressRepo/*, $addressRepo, $accountService*/) {
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
+                    $warenkorb = $warenkorb->toArray();
 //                    $kontakt = $contact->toArray();
 //                    $contaktId = $warenkorb->toArray();
                     $loginKontakt = $addressRepo->getAddresses($warenkorb["customerInvoiceAddressId"]);
