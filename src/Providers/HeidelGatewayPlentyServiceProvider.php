@@ -18,6 +18,7 @@ use Plenty\Plugin\ConfigRepository;
 use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
 use HeidelGatewayPlenty\Methods\HgwCreditcardPaymentMethod;
 /* ************************************************************************************ */
+use Plenty\Modules\Account\Contact\Models\Contact;
 //use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
 //use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 //use Plenty\Modules\Account\Contact\Models\Contact;
@@ -51,7 +52,10 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         Dispatcher $eventDispatcher,
         BasketRepositoryContract $warenkorb,
         ConfigRepository $configRepository,
-        LibraryCallContract $libCall
+        LibraryCallContract $libCall,
+
+        Contact $contact
+
 
 //        AccountService $accountService
 //        AddressRepositoryContract $addressRepo
@@ -84,9 +88,10 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
         // Listen for the event that gets the payment method content
         $eventDispatcher->listen(GetPaymentMethodContent::class,
-            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall /*, $addressRepo, $accountService*/) {
+            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $contact/*, $addressRepo, $accountService*/) {
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
+                    $kontakt = $contact->toArray();
 
 
 
@@ -137,7 +142,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 //                    $prepaymentRequest = $libCall->call("HeidelGatewayPlenty::prepayment_request",$warenkorb);
 
 //                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
-                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($warenkorb));
+                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($kontakt));
 					  $event->setType('htmlContent');
                 }
             });
