@@ -94,7 +94,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                     $warenkorb = $warenkorb->load();
 //                    $kontakt = $contact->toArray();
 //                    $contaktId = $warenkorb->toArray();
-//                    $loginKontakt = $contractRepo->findContactById($contaktId["customerId"]);
+                    $loginKontakt = $contractRepo->findAddressById($warenkorb["customerInvoiceAddressId"]);
 //                    $loginKontakt = $loginKontakt->toArray();
 
 
@@ -147,7 +147,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 //                    $prepaymentRequest = $libCall->call("HeidelGatewayPlenty::prepayment_request",$warenkorb);
 
 //                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
-                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($warenkorb));
+                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($loginKontakt));
 					  $event->setType('htmlContent');
                 }
             });
