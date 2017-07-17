@@ -19,7 +19,7 @@ use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
 use HeidelGatewayPlenty\Methods\HgwCreditcardPaymentMethod;
 /* ************************************************************************************ */
 use Plenty\Modules\Account\Contact\Models\Contact;
-//use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
+use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
 use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 //use Plenty\Modules\Account\Contact\Models\Contact;
 
@@ -55,11 +55,11 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         LibraryCallContract $libCall,
 
         Contact $contact,
-        ContactRepositoryContract $contractRepo
+        ContactRepositoryContract $contractRepo,
 
 
 //        AccountService $accountService
-//        AddressRepositoryContract $addressRepo
+        AddressRepositoryContract $addressRepo
     )
     {
         // Create the ID of the payment method if it doesn't exist yet
@@ -89,12 +89,12 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
         // Listen for the event that gets the payment method content
         $eventDispatcher->listen(GetPaymentMethodContent::class,
-            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $contact, $contractRepo/*, $addressRepo, $accountService*/) {
+            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $contact, $contractRepo,$addressRepo/*, $addressRepo, $accountService*/) {
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
 //                    $kontakt = $contact->toArray();
 //                    $contaktId = $warenkorb->toArray();
-                    $loginKontakt = $contractRepo->findAddressById($warenkorb["customerInvoiceAddressId"]);
+                    $loginKontakt = $addressRepo->getAddresses($warenkorb["customerInvoiceAddressId"]);
 //                    $loginKontakt = $loginKontakt->toArray();
 
 
