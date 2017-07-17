@@ -133,9 +133,11 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 //                                    2 => null,                                                 //"cssPath"
                         ]
                     );
-                    $prepaymentRequest = $libCall->call("HeidelGatewayPlenty::prepayment_request",$params);
+//                    $prepaymentRequest = $libCall->call("HeidelGatewayPlenty::prepayment_request",$params);
+//                    $prepaymentRequest = $libCall->call("HeidelGatewayPlenty::prepayment_request",$warenkorb);
 
-                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
+//                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($prepaymentRequest));
+                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($warenkorb));
 					  $event->setType('htmlContent');
                 }
             });
