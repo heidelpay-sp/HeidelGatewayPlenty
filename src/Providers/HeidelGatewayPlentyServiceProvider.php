@@ -55,11 +55,11 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
         LibraryCallContract $libCall,
 
         Contact $contact,
-        ContactRepositoryContract $contractRepo,
+        ContactRepositoryContract $contractRepo
 
 
 //        AccountService $accountService
-        AddressRepositoryContract $addressRepo
+//      AddressRepositoryContract $addressRepo
     )
     {
         // Create the ID of the payment method if it doesn't exist yet
@@ -89,23 +89,23 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
         // Listen for the event that gets the payment method content
         $eventDispatcher->listen(GetPaymentMethodContent::class,
-            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $contact, $contractRepo,$addressRepo/*, $addressRepo, $accountService*/) {
+            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $contact, $contractRepo) {
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
 //                    $warenkorb = $warenkorb->toArray();
 //                    $kontakt = $contact->toArray();
 //                    $contaktId = $warenkorb->toArray();
-//                    $loginKontakt = $addressRepo->getAddresses($warenkorb["customerInvoiceAddressId"]);
-//                    $loginKontakt = $loginKontakt->toArray();
 
-
+                    $addressRepo = \Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
+                    $loginKontakt = $addressRepo->getAddresses($warenkorb["customerInvoiceAddressId"]);
+                    $loginKontakt = $loginKontakt->toArray();
 
 
                      /* ************************************************************************************ */
 //                    $accountService = pluginApp(AccountService::class);
 //                    $currentContactId = $accountService->getAccountContactId();
-//                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($currentContactId));
-//                     $event->setType('htmlContent');
+                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($loginKontakt));
+                     $event->setType('htmlContent');
 
                     /* ************************************************************************************ */
                     $params = array(
