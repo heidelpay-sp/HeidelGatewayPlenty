@@ -19,12 +19,12 @@ use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
 use HeidelGatewayPlenty\Methods\HgwCreditcardPaymentMethod;
 /* ************************************************************************************ */
 use Plenty\Modules\Account\Contact\Models\Contact;
-//use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
+use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
 use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 //use Plenty\Modules\Account\Contact\Models\Contact;
 
 // um an den Kundenaccount heranzukommen
-use Plenty\Modules\Frontend\Services\AccountService;
+//use Plenty\Modules\Frontend\Services\AccountService;
 
 /* ************************************************************************************ */
 
