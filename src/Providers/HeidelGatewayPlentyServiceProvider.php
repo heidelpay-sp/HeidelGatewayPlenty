@@ -96,16 +96,16 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 //                    $kontakt = $contact->toArray();
 //                    $contaktId = $warenkorb->toArray();
 
-                    $addressRepo = new Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
-                    $loginKontakt = $addressRepo->getAddresses($warenkorb["customerInvoiceAddressId"]);
-                    $loginKontakt = $loginKontakt->toArray();
+//                    $addressRepo = new Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
+//                    $loginKontakt = $addressRepo->getAddresses($warenkorb["customerInvoiceAddressId"]);
+//                    $loginKontakt = $loginKontakt->toArray();
 
 
                      /* ************************************************************************************ */
 //                    $accountService = pluginApp(AccountService::class);
 //                    $currentContactId = $accountService->getAccountContactId();
-                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($loginKontakt));
-                     $event->setType('htmlContent');
+//                     $event->setValue('<h1>Heidelpay GetPaymentMethodContent<h1><br>'.json_encode($loginKontakt));
+//                     $event->setType('htmlContent');
 
                     /* ************************************************************************************ */
                     $params = array(
