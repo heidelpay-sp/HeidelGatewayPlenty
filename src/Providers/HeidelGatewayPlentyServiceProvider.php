@@ -24,7 +24,7 @@ use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 //use Plenty\Modules\Account\Contact\Models\Contact;
 
 // um an den Kundenaccount heranzukommen
-//use Plenty\Modules\Frontend\Services\AccountService;
+use Plenty\Modules\Frontend\Services\AccountService;
 
 /* ************************************************************************************ */
 
