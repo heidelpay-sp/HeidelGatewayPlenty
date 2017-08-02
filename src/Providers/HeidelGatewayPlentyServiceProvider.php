@@ -109,42 +109,42 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
                      $event->setType('htmlContent');
 
                     /* ************************************************************************************ */
-                    $params = array(
-                        "authentification" => [
-                            0 => $configRepository->get('HeidelGatewayPlenty.securitySender'),
-                            1 => $configRepository->get('HeidelGatewayPlenty.login'),
-                            2 => $configRepository->get('HeidelGatewayPlenty.password'),
-                            3 => $configRepository->get('HeidelGatewayPlenty.hgw_pp_channel'),
-                            4 => $configRepository->get('HeidelGatewayPlenty.transactionmode')
-                        ],
-                        "customerAddress" => [
-                            0 => "Albert",                                                  //"nameGiven",
-                            1 => "Alfa",                                                    //"nameFamily",
-                            2 => null,                                                      //"nameCompany",
-                            3 => "147",                                                     //"shopperId",
-                            4 => "Vangerowstr. 18",                                         //"addressStreet",
-                            5 => null,                                                      //"addressState",
-                            6 => "69115",                                                   //"addressZip",
-                            7 => "Heidelberg",                                              //"addressCity",
-                            8 => "DE",                                                      //"addressCountry",
-                            9 => "sascha.pflueger@heidelpay.de",                            //"contactMail"
-                        ],
-                        "basketData" => [
-                            0 => "2",                                                   //"ShopIdentifier",
-                            1 => "15.60",                                                     //"amount",
-                            2 => "EUR",                                                     //"currency",
-                            3 => $configRepository->get("HeidelGatewayPlenty.secret"),      //"secret"
-                        ],
-                        "async" => [
-                            0 => "DE",                                                      //"languageCode",
-                            1 => "https://heidelpay-dev.plentymarkets-cloud01.com"         //"responseUrl"
-                        ],
-                        "authorize" => [
-//                                    0 => "https://heidelpay-dev.plentymarkets-cloud01.com/",   //"paymentFrameOrigin",
-//                                    1 => "TRUE",                                               //"preventAsyncRedirect",
-//                                    2 => null,                                                 //"cssPath"
-                        ]
-                    );
+//                    $params = array(
+//                        "authentification" => [
+//                            0 => $configRepository->get('HeidelGatewayPlenty.securitySender'),
+//                            1 => $configRepository->get('HeidelGatewayPlenty.login'),
+//                            2 => $configRepository->get('HeidelGatewayPlenty.password'),
+//                            3 => $configRepository->get('HeidelGatewayPlenty.hgw_pp_channel'),
+//                            4 => $configRepository->get('HeidelGatewayPlenty.transactionmode')
+//                        ],
+//                        "customerAddress" => [
+//                            0 => "Albert",                                                  //"nameGiven",
+//                            1 => "Alfa",                                                    //"nameFamily",
+//                            2 => null,                                                      //"nameCompany",
+//                            3 => "147",                                                     //"shopperId",
+//                            4 => "Vangerowstr. 18",                                         //"addressStreet",
+//                            5 => null,                                                      //"addressState",
+//                            6 => "69115",                                                   //"addressZip",
+//                            7 => "Heidelberg",                                              //"addressCity",
+//                            8 => "DE",                                                      //"addressCountry",
+//                            9 => "sascha.pflueger@heidelpay.de",                            //"contactMail"
+//                        ],
+//                        "basketData" => [
+//                            0 => "2",                                                   //"ShopIdentifier",
+//                            1 => "15.60",                                                     //"amount",
+//                            2 => "EUR",                                                     //"currency",
+//                            3 => $configRepository->get("HeidelGatewayPlenty.secret"),      //"secret"
+//                        ],
+//                        "async" => [
+//                            0 => "DE",                                                      //"languageCode",
+//                            1 => "https://heidelpay-dev.plentymarkets-cloud01.com"         //"responseUrl"
+//                        ],
+//                        "authorize" => [
+////                                    0 => "https://heidelpay-dev.plentymarkets-cloud01.com/",   //"paymentFrameOrigin",
+////                                    1 => "TRUE",                                               //"preventAsyncRedirect",
+////                                    2 => null,                                                 //"cssPath"
+//                        ]
+//                    );
 //                    $prepaymentRequest = $libCall->call("HeidelGatewayPlenty::prepayment_request",$params);
 //                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.$prepaymentRequest);
 ////                    $event->setValue('<h1>Heidelpay GetPaymentMethodContent</h1>'.json_encode($loginKontakt));
