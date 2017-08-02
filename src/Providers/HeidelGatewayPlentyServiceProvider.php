@@ -19,12 +19,12 @@ use HeidelGatewayPlenty\Helper\HeidelGatewayPlentyHelper;
 use HeidelGatewayPlenty\Methods\HgwCreditcardPaymentMethod;
 /* ************************************************************************************ */
 use Plenty\Modules\Account\Contact\Models\Contact;
-use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
+//use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
 use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 //use Plenty\Modules\Account\Contact\Models\Contact;
 
 // um an den Kundenaccount heranzukommen
-//use Plenty\Modules\Frontend\Services\AccountService;
+use Plenty\Modules\Frontend\Services\AccountService;
 
 /* ************************************************************************************ */
 
@@ -56,6 +56,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
         Contact $contact,
         ContactRepositoryContract $contractRepo
+//        , AddressRepositoryContract $addressRepository
 
 
 //        AccountService $accountService
@@ -89,7 +90,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 
         // Listen for the event that gets the payment method content
         $eventDispatcher->listen(GetPaymentMethodContent::class,
-            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $contact, $contractRepo) {
+            function (GetPaymentMethodContent $event) use ($paymentHelper, $warenkorb, $configRepository, $libCall , $contact, $contractRepo /*, $addressRepository*/) {
                 if ($event->getMop() == $paymentHelper->getPaymentMethod()) {
                     $warenkorb = $warenkorb->load();
 //                    $warenkorb = $warenkorb->toArray();
