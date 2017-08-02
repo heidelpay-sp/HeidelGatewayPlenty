@@ -54,13 +54,13 @@ try {
 //    $paramsBasketData   = SdkRestApi::getParam("basketData");
 //    $paramsAsync        = SdkRestApi::getParam("async");
 
-    return
+//    return
 //        $currentContactId
 //        $paramsAuth
 //        $paramsCustomerData
 //        $paramsBasketData
 //        $paramsAsync
-        ;
+//        ;
 
     return json_encode($prepaymentPaymentMethod->toJson());
 } catch (Exception $e){
