@@ -96,7 +96,7 @@ class HeidelGatewayPlentyServiceProvider extends ServiceProvider
 //                    $kontakt = $contact->toArray();
 //                    $contaktId = $warenkorb->toArray();
 
-                    $addressRepo = \Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
+                    $addressRepo = new Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
                     $loginKontakt = $addressRepo->getAddresses($warenkorb["customerInvoiceAddressId"]);
                     $loginKontakt = $loginKontakt->toArray();
 
